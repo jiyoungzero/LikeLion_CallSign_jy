@@ -1,8 +1,11 @@
 from email.policy import default
+from enum import unique
+from tkinter import CASCADE
 from unittest.util import _MAX_LENGTH
 from django.db import models
 from datetime import datetime, date
-
+from accounts.models import *
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -63,7 +66,9 @@ class Post(models.Model):
     sex = models.ForeignKey(Sex, on_delete=models.CASCADE, blank=True, null=True) 
        
     flag_enddate = models.BooleanField(default=False)
-    
+    # 좋아요
+    user = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
+    like_user_set = models.ManyToManyField(User, blank=True, related_name='like_user_set')
     # 같이 운동할 날짜
     start_date = models.DateField(auto_now=True,editable=True)
     end_date = models.DateField(auto_now=False,editable=True)
@@ -78,6 +83,17 @@ class Post(models.Model):
     def summary(self):
         return self.body[:20]
 
+    @property
+    def like_count(self):
+        return self.like_user_set.count()
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = (('user','post'))
 
 
 

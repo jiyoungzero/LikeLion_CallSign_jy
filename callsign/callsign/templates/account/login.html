@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Log In" %}{% endblock %}
+
+{% block content %}
+
+
+<br><br>
+<div>
+  <div>
+      <div>
+       <h1>LOGIN</h1>
+        <div>
+
+          
+          <form class="login" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+           <div style="float:center;">
+            <button class="primaryAction" type="submit">로그인</button>
+          </form>
+
+          <button class="primaryAction" type="submit"><a href="{{ signup_url }}">회원가입</a></button>
+          </div>
+
+    
+          <p>{% blocktrans %}If you have not created an account yet, then please
+          <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

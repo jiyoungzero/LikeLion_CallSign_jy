@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form class="new_form" action="{% url 'accounts:information' %}" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+
+<div>
+    <div>이름</div>
+    <div><input required type="text" name="name" id="name"></div>
+</div>
+
+<div>
+    <div>성별</div>
+    <div><input required type="text" name="gender" id="gender"></div>
+</div>
+
+<div>
+    <div>좋아하는 운동</div>
+    <div><input required type="text" name="sports" id="sports"></div>
+</div>
+
+<div>
+    <button type="submit">확인</button>
+</div>
+
+</form>
+
+{% endblock %}
