@@ -8,6 +8,4 @@ urlpatterns = [
     path('mypage/', mypage, name="mypage"),
     path('newinfo/', newinfo, name= 'newinfo'),
     path('information/', information, name="information"),
-
-    
 ]

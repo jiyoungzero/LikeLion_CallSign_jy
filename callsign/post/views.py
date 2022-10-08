@@ -244,11 +244,11 @@ def like_toggle(request, post_id):
     return HttpResponse(json.dumps(context), content_type="apllication/json")
 
 
-#북마크 마이페이지에 보이게
-def my_like(request, user_id):
-    user = Member.objects.get(id=user_id)
-    like_list = Like.objects.filter(user=user)
-    context = {
-        'like_list' : like_list,
-    }
-    return render(request, 'accounts/mypage.html', context)
+# #북마크 마이페이지에 보이게
+# def my_like(request, user_id):
+#     user = Member.objects.get(id=user_id)
+#     like_list = Like.objects.filter(user=user)
+#     context = {
+#         'like_list' : like_list,
+#     }
+#     return render(request, 'accounts/mypage.html', context)
