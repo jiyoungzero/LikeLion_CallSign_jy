@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Member
+from post.models import *
 from django.contrib import auth
 
 # Create your views here.
@@ -15,6 +16,7 @@ def mypage(request):
     member = Member.objects.get(user=user)
     context = {
         'member':member,
+        'like_list' : Like.objects.filter(user=user),
         }
     return render(request, 'accounts/mypage.html', context)
 

@@ -27,6 +27,20 @@ def post_detail(request, id):
     post = get_object_or_404(Post, pk = id)
     return render(request, 'post/post_detail.html', {'post':post})
 
+# 권한부여 
+
+def post_completed(request, id):
+    completed_post = Post.objects.get(pk = id)
+    sex = Sex.objects.all()
+    exercise = Exercise.objects.all()
+    return redirect('post:completed_detail')
+
+def completed_detail(request, id) :
+    post = get_object_or_404(Post, id = id)
+
+    return render(request, 'post/post_completed.html', {'post':post})
+
+# 
 
 def post_new(request):
     exercise = Exercise.objects.all()
@@ -38,6 +52,7 @@ def post_create(request):
     new_post.title = request.POST['title']
     new_post.url = request.POST['url']
     new_post.exercise = get_object_or_404(Exercise, id=request.POST['exercise'])
+    new_post.count = request.POST['count']
     new_post.sex = get_object_or_404(Sex, id=request.POST['sex'])
     # new_post.writer
     new_post.pub_date = timezone.now()
@@ -244,11 +259,11 @@ def like_toggle(request, post_id):
     return HttpResponse(json.dumps(context), content_type="apllication/json")
 
 
-# #북마크 마이페이지에 보이게
-# def my_like(request, user_id):
-#     user = Member.objects.get(id=user_id)
-#     like_list = Like.objects.filter(user=user)
-#     context = {
-#         'like_list' : like_list,
-#     }
-#     return render(request, 'accounts/mypage.html', context)
+#북마크 마이페이지에 보이게
+def my_like(request, user_id):
+    user = User.objects.get(id=user_id)
+    like_list = Like.objects.filter(user=user)
+    context = {
+        'like_list' : like_list,
+    }
+    return render(request, 'accounts/mypage.html', context)

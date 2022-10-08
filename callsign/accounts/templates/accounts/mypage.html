@@ -8,6 +8,10 @@
     <h2>이름:{{member.name}}</h2>
     <h2>성별:{{member.gender}}</h2>
     <h2>좋아하는 운동:{{member.sports}}</h2>
+    <h2>좋아요 목록</h2>
+    {% for like in like_list %}
+            <a href="{% url 'post:post_detail' like.post.id %}" >{{ like.post.title }}</a><br>
+    {% endfor %}
 </div> 
 
 

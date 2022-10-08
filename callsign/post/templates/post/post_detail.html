@@ -3,7 +3,6 @@
 
 {% block content %}
 
-<!--나중에 상속으로 넣어야함!!!!!!!!!!!-->
 
 
 <h1>{{post.title}}</h1>
@@ -19,7 +18,11 @@
 <a href = "{%url 'post:post_edit' post.id%}">수정하기</a>
 <a href = "{%url 'post:post_delete' post.id%}">방 없애기</a>
 
+{% if user == post.writer %}
 
+<a href="{% url 'post:post_completed' %}">모집 마감하기</a>
+
+{% else %}
 <span href="#" class="like" name ="{{post.id}}" value="Like">
     {% if user in post.like_user_set.all %}
         <div class="alt-service-icon">
@@ -33,9 +36,9 @@
         <span id="count-{{post.ids}}" class="alt-services-title font-alt">
             참여하기
             {% if post.like_count == 0 %}
-                0명
+                0 / {{post.count}} 명
             {% else %}
-                {{ post.like_count }}명
+                {{ post.like_count }} /  {{post.count}} 명
             {% endif %}
         </span>
 </span>
@@ -73,6 +76,6 @@
          })
     })
 </script>
-
+{% endif %}
 
 {% endblock %}

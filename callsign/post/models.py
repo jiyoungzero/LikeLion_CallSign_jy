@@ -58,21 +58,22 @@ class Sex(models.Model):
 
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
+    writer = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=200)
     url = models.CharField(max_length = 300, default="")
     body = models.TextField()
     pub_date = models.DateTimeField(auto_now=True, verbose_name="등록(수정)일")
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE, blank=True, null=True)
     sex = models.ForeignKey(Sex, on_delete=models.CASCADE, blank=True, null=True) 
-       
+    count = models.CharField(max_length = 30, null="True")
     flag_enddate = models.BooleanField(default=False)
     # 좋아요
-    user = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
     like_user_set = models.ManyToManyField(User, blank=True, related_name='likes_user_set',through='Like',null=True)
     # 같이 운동할 날짜
     start_date = models.DateField(auto_now=True,editable=True)
     end_date = models.DateField(auto_now=False,editable=True)
-
+    # 모집마감
+    completed = models.BooleanField(default=True)
 
     def duration(self):
         return self.end_date - self.start_date

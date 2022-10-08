@@ -21,7 +21,8 @@ urlpatterns = [
     path('tennis_list/', tennis_list, name="tennis_list"), 
     path('running_list/', running_list, name="running_list"), 
     path('etc_list/', etc_list, name="etc_list"), 
-    
+    path('completed_detail', completed_detail, name="completed_detail"),
+    path('post_completed/',post_completed, name="post_completed"),
     path('like_toggle/<int:post_id>', like_toggle, name="like_toggle"),
-    # path('my_like/<int:user_id>', my_like, name="my_like"),
+    path('my_like/<int:user_id>', my_like, name="my_like"),
 ]
