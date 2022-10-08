@@ -20,7 +20,7 @@
 
 {% if user == post.writer %}
 
-<a href="{% url 'post:post_completed' %}">모집 마감하기</a>
+<a href="{% url 'post:post_completed' post.id %}">모집 마감하기</a>
 
 {% else %}
 <span href="#" class="like" name ="{{post.id}}" value="Like">

@@ -30,13 +30,15 @@ def post_detail(request, id):
 # 권한부여 
 
 def post_completed(request, id):
-    completed_post = Post.objects.get(pk = id)
-    sex = Sex.objects.all()
-    exercise = Exercise.objects.all()
+    completed_post = Post.objects.get(id = id)
+    completed_sex = Sex.objects.all()
+    completed_exercise = Exercise.objects.all()
+    completed_post.completed=False
+    completed_post.save()
     return redirect('post:completed_detail')
 
 def completed_detail(request, id) :
-    post = get_object_or_404(Post, id = id)
+    post = get_object_or_404(Post, pk = id)
 
     return render(request, 'post/post_completed.html', {'post':post})
 
