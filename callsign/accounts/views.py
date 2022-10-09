@@ -17,6 +17,7 @@ def mypage(request):
     context = {
         'member':member,
         'like_list' : Like.objects.filter(user=user),
+        'posts':Post.objects.filter(writer=user),
         }
     return render(request, 'accounts/mypage.html', context)
 
