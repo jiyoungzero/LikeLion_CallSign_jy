@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 {% block content %}
 
-<h1>운동 별 리스트 보여주는 곳(일단 다 모아서 보여줌) : CallSign</h1>
-<button type="button" onclick="location.href='/post/post_new/';"> 새 팀원 모집하기  </button>
-
 <hr>
+
 
 <div>
   {% for post in posts %}

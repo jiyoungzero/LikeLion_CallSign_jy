@@ -1,14 +1,22 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+  <div class="mainHead">
+    <h4 id="logo">CallSign</h4>
+    <button type="button" id="newMember" onclick="location.href='/post/post_new/';"> + 새 팀원 모집하기  </button>
+  </div>
+
+
   <div class="nav_container">
 
     <div class="container">
