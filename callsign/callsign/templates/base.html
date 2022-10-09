@@ -66,15 +66,6 @@
               aria-current="page"
               href="{%url 'post:badminton_list' %}"
               >배드민턴</a>
-            
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              href="{%url 'post:running_list' %}"
-              >산책/러닝</a>
-            
           </li>
 
           <li class="nav-item">
@@ -135,6 +126,30 @@
     </div>
 </div>
 
+<div class="tabs">
+  <input id="soccer" type="radio" name="tab_item" checked>
+  <label class="tab_item" for="soccer">
+    <a id="tab" href="{%url 'post:soccer_list' %}">축구</a></label>
+  <input id="basketball" type="radio" name="tab_item">
+  <label class="tab_item" for="basketball">
+    <a id="tab" href="{%url 'post:basketball_list' %}">농구</a>
+  </label>
+  <input id="volleyball" type="radio" name="tab_item">
+  <label class="tab_item" for="volleyball">
+    <a id="tab" href="{%url 'post:volleyball_list' %}">배구</a>
+  </label>
+  <input id="baseball" type="radio" name="tab_item">
+  <label class="tab_item" for="baseball">
+    <a id="tab" href="{%url 'post:baseball_list' %}">야구</a>
+  </label>
+  <input id="tennis" type="radio" name="tab_item">
+  <label class="tab_item" for="tennis">
+    <a id="tab" href="{%url 'post:tennis_list' %}">테니스</a>
+  </label>
+  <input id="badminton" type="radio" name="tab_item">
+  <label class="tab_item" for="badminton">
+    <a id="tab" href="{%url 'post:badminton_list' %}">배드민턴</a>
+  </label>
 
     <div class="container">
         {% block content %}

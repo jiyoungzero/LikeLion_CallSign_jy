@@ -19,7 +19,6 @@ urlpatterns = [
     path('badminton_list/', badminton_list, name="badminton_list"), 
     path('volleyball_list/', volleyball_list, name="volleyball_list"), 
     path('tennis_list/', tennis_list, name="tennis_list"), 
-    path('running_list/', running_list, name="running_list"), 
     path('etc_list/', etc_list, name="etc_list"), 
     # 모집 완료 후 보이는거
     path('completed_detail/<int:id>', completed_detail, name="completed_detail"),
