@@ -17,6 +17,6 @@
     <a href = "{%url 'post:post_detail' r.id%}">참여하기</a>
     </div>
 {% endfor %} 
-
-
+<a href="{% url 'post:completed_running_list' %}"> 완료된 게시글 보기</a>
+<a href="{% url 'post:running_list' %}"> 모집중인 게시글 보기</a>
 {% endblock %}

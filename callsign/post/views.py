@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def postlist(request):
-    posts = Post.objects.all().order_by('end_date') # 모집 마감일 급한 것 부터 정렬
+    posts = Post.objects.filter(completed=False).order_by('end_date') # 모집 마감일 급한 것 부터 정렬
     enddate_list = []
     
     # 마감일이 이미 중복으로 존재하면 flag를 True로 변화시켜 출력되지 않게끔 만듦
@@ -33,16 +33,30 @@ def post_completed(request, id):
     completed_post = Post.objects.get(id = id)
     completed_sex = Sex.objects.all()
     completed_exercise = Exercise.objects.all()
-    completed_post.completed=False
+    completed_post.completed=True
     completed_post.save()
-    return redirect('post:completed_detail')
+    return redirect('post:postlist')
+
+def completed_postlist(request):
+    posts = Post.objects.filter(completed=True).order_by('end_date') # 모집 마감일 급한 것 부터 정렬
+    enddate_list = []
+    
+    # 마감일이 이미 중복으로 존재하면 flag를 True로 변화시켜 출력되지 않게끔 만듦
+    for p in posts:
+        if p.end_date not in enddate_list:
+            enddate_list.append(p.end_date)
+        else:
+            p.flag_enddate = True
+      
+    return render(request, 'post/postlist.html', {'posts':posts })
 
 def completed_detail(request, id) :
     post = get_object_or_404(Post, pk = id)
 
     return render(request, 'post/post_completed.html', {'post':post})
 
-# 
+
+
 
 def post_new(request):
     exercise = Exercise.objects.all()
@@ -110,7 +124,7 @@ def post_delete(request, id):
 def soccer_list(request):
     soccer_list = []
     s = Exercise.objects.filter(name="축구")
-    soccer_post = Post.objects.filter(exercise__in=s).order_by('end_date')
+    soccer_post = Post.objects.filter(exercise__in=s, completed=False).order_by('end_date')
     
     for post in soccer_post:
         soccer_list.append(post)
@@ -127,7 +141,7 @@ def soccer_list(request):
 def basketball_list(request):
     basketball_list = []
     bsk = Exercise.objects.filter(name="농구")
-    bsk_post = Post.objects.filter(exercise__in=bsk).order_by('end_date')
+    bsk_post = Post.objects.filter(exercise__in=bsk, completed=False).order_by('end_date')
     
     for post in bsk_post:
         basketball_list.append(post)
@@ -144,7 +158,7 @@ def basketball_list(request):
 def volleyball_list(request):
     volleyball_list = []
     v = Exercise.objects.filter(name="배구")
-    v_post = Post.objects.filter(exercise__in=v).order_by('end_date')
+    v_post = Post.objects.filter(exercise__in=v, completed=False).order_by('end_date')
     
     for post in v_post:
         volleyball_list.append(post)
@@ -160,7 +174,7 @@ def volleyball_list(request):
 def baseball_list(request):
     baseball_list = []
     b = Exercise.objects.filter(name="야구")
-    b_post = Post.objects.filter(exercise__in=b).order_by('end_date')
+    b_post = Post.objects.filter(exercise__in=b, completed=False).order_by('end_date')
     
     for post in b_post:
         baseball_list.append(post)
@@ -177,7 +191,7 @@ def baseball_list(request):
 def tennis_list(request):
     tennis_list = []
     t = Exercise.objects.filter(name="테니스")
-    t_post = Post.objects.filter(exercise__in=t).order_by('end_date')
+    t_post = Post.objects.filter(exercise__in=t, completed=False).order_by('end_date')
     
     for post in t_post:
         tennis_list.append(post)
@@ -193,7 +207,7 @@ def tennis_list(request):
 def badminton_list(request):
     badminton_list = []
     b = Exercise.objects.filter(name="배드민턴")
-    b_post = Post.objects.filter(exercise__in=b).order_by('end_date')
+    b_post = Post.objects.filter(exercise__in=b, completed=False).order_by('end_date')
     
     for post in b_post:
         badminton_list.append(post)
@@ -209,7 +223,7 @@ def badminton_list(request):
 def running_list(request):
     running_list = []
     r = Exercise.objects.filter(name="산책/러닝")
-    r_post = Post.objects.filter(exercise__in=r).order_by('end_date')
+    r_post = Post.objects.filter(exercise__in=r, completed=False).order_by('end_date')
     
     for post in r_post:
         running_list.append(post)
@@ -225,7 +239,141 @@ def running_list(request):
 def etc_list(request):
     etc_list = []
     e = Exercise.objects.filter(name="기타")
-    e_post = Post.objects.filter(exercise__in=e).order_by('end_date')
+    e_post = Post.objects.filter(exercise__in=e, completed=False).order_by('end_date')
+    
+    for post in e_post:
+        etc_list.append(post)
+    enddate_list = []    
+    for p in e_post:
+        if p.end_date not in enddate_list:
+            enddate_list.append(p.end_date)
+        else:
+            p.flag_enddate = True
+
+    return render(request, 'post/etc_list.html', {'etc_list': etc_list})
+
+
+# 완료된
+
+def completed_soccer_list(request):
+    soccer_list = []
+    s = Exercise.objects.filter(name="축구")
+    soccer_post = Post.objects.filter(exercise__in=s, completed=True).order_by('end_date')
+    
+    for post in soccer_post:
+        soccer_list.append(post)
+        
+    enddate_list = []    
+    for p in soccer_post:
+        if p.end_date not in enddate_list:
+            enddate_list.append(p.end_date)
+        else:
+            p.flag_enddate = True
+
+    return render(request, 'post/soccer_list.html', {'soccer_list': soccer_list})
+
+def completed_basketball_list(request):
+    basketball_list = []
+    bsk = Exercise.objects.filter(name="농구")
+    bsk_post = Post.objects.filter(exercise__in=bsk, completed=True).order_by('end_date')
+    
+    for post in bsk_post:
+        basketball_list.append(post)
+        
+    enddate_list = []    
+    for p in bsk_post:
+        if p.end_date not in enddate_list:
+            enddate_list.append(p.end_date)
+        else:
+            p.flag_enddate = True
+
+    return render(request, 'post/basketball_list.html', {'basketball_list': basketball_list})
+
+def completed_volleyball_list(request):
+    volleyball_list = []
+    v = Exercise.objects.filter(name="배구")
+    v_post = Post.objects.filter(exercise__in=v, completed=True).order_by('end_date')
+    
+    for post in v_post:
+        volleyball_list.append(post)
+    enddate_list = []    
+    for p in v_post:
+        if p.end_date not in enddate_list:
+            enddate_list.append(p.end_date)
+        else:
+            p.flag_enddate = True
+
+    return render(request, 'post/volleyball_list.html', {'volleyball_list': volleyball_list})
+
+def completed_baseball_list(request):
+    baseball_list = []
+    b = Exercise.objects.filter(name="야구")
+    b_post = Post.objects.filter(exercise__in=b, completed=True).order_by('end_date')
+    
+    for post in b_post:
+        baseball_list.append(post)
+    enddate_list = []    
+    for p in b_post:
+        if p.end_date not in enddate_list:
+            enddate_list.append(p.end_date)
+        else:
+            p.flag_enddate = True
+
+    return render(request, 'post/baseball_list.html', {'baseball_list': baseball_list})
+
+
+def completed_tennis_list(request):
+    tennis_list = []
+    t = Exercise.objects.filter(name="테니스")
+    t_post = Post.objects.filter(exercise__in=t, completed=True).order_by('end_date')
+    
+    for post in t_post:
+        tennis_list.append(post)
+    enddate_list = []    
+    for p in t_post:
+        if p.end_date not in enddate_list:
+            enddate_list.append(p.end_date)
+        else:
+            p.flag_enddate = True
+
+    return render(request, 'post/tennis_list.html', {'tennis_list': tennis_list})
+
+def completed_badminton_list(request):
+    badminton_list = []
+    b = Exercise.objects.filter(name="배드민턴")
+    b_post = Post.objects.filter(exercise__in=b, completed=True).order_by('end_date')
+    
+    for post in b_post:
+        badminton_list.append(post)
+    enddate_list = []    
+    for p in b_post:
+        if p.end_date not in enddate_list:
+            enddate_list.append(p.end_date)
+        else:
+            p.flag_enddate = True
+
+    return render(request, 'post/badminton_list.html', {'badminton_list': badminton_list})
+
+def completed_running_list(request):
+    running_list = []
+    r = Exercise.objects.filter(name="산책/러닝")
+    r_post = Post.objects.filter(exercise__in=r, completed=True).order_by('end_date')
+    
+    for post in r_post:
+        running_list.append(post)
+    enddate_list = []    
+    for p in r_post:
+        if p.end_date not in enddate_list:
+            enddate_list.append(p.end_date)
+        else:
+            p.flag_enddate = True
+
+    return render(request, 'post/running_list.html', {'running_list': running_list})
+
+def completed_etc_list(request):
+    etc_list = []
+    e = Exercise.objects.filter(name="기타")
+    e_post = Post.objects.filter(exercise__in=e, completed=True).order_by('end_date')
     
     for post in e_post:
         etc_list.append(post)

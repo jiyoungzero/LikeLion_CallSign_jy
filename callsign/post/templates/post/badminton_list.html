@@ -17,7 +17,9 @@
     성별 : {{b.sex}}<br>
     <a href = "{%url 'post:post_detail' b.id%}">참여하기</a>
     </div>
-{% endfor %} 
+{% endfor %}
 
+<a href="{% url 'post:completed_badminton_list'%}"> 완료된 게시글 보기</a>
+<a href="{% url 'post:badmintion_list' %}"> 모집중인 게시글 보기</a>
 
 {% endblock %}

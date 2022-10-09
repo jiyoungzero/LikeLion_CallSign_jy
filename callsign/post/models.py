@@ -73,7 +73,7 @@ class Post(models.Model):
     start_date = models.DateField(auto_now=True,editable=True)
     end_date = models.DateField(auto_now=False,editable=True)
     # 모집마감
-    completed = models.BooleanField(default=True)
+    completed = models.BooleanField(default=False)
 
     def duration(self):
         return self.end_date - self.start_date
