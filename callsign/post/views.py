@@ -70,7 +70,7 @@ def post_create(request):
     new_post.exercise = get_object_or_404(Exercise, id=request.POST['exercise'])
     new_post.count = request.POST['count']
     new_post.sex = get_object_or_404(Sex, id=request.POST['sex'])
-    # new_post.writer
+    new_post.writer = request.user
     new_post.pub_date = timezone.now()
     
     # 모집 시작, 마감일 추가

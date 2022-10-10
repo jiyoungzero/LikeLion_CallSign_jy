@@ -89,7 +89,7 @@
             <a
               class="nav-link active"
               aria-current="page"
-              href="{% url 'account_logout' %}?next={{ request.path }}">로그아웃</a>
+              href="{% url 'account_logout' %}"?next="{{request.path}}">로그아웃</a>
           </li>
           {% else %} 
           <li class="nav-item">
@@ -112,7 +112,7 @@
             <a
               class="nav-link active"
               aria-current="page"
-              href="{% url 'account_signup' %}?next={{ request.path }}"
+              href="{% url 'account_signup' %}?next={% url 'accounts:newinfo' %}"
               >회원가입</a>
           </li>
           <li class="nav-item">

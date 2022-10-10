@@ -10,6 +10,7 @@
     <h2>좋아하는 운동:{{member.sports}}</h2>
     <h2> 모집 현황 </h2>
     {% for post in posts %}
+    <a href="{% url 'post:post_detail' post.id %}" >{{post.title}}</a><br>
     {{ post.like_count }} /  {{post.count}} 명
     {% endfor %}
     <h2>신청 목록</h2>

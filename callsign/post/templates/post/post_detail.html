@@ -4,23 +4,27 @@
 {% block content %}
 
 
+{% if post.completed is True %}
+<h1>모집 마감됨</h1>
+{% endif %}
 
 <h1>{{post.title}}</h1>
 등록날짜 : {{post.pub_date}}<br>
 모집마감일 : {{post.end_date}}<br>
 운동종목 : {{post.exercise}}<br>
 성별 : {{post.sex}} <br>
+글쓴사람 : {{post.writer}}<br>
 방장님 오픈채팅 url : {{ post.url|urlize }}
 <hr>
 {% comment %} {{post.url}} {% endcomment %}
 <p>{{post.body}}</p>
 
-{% if Member.user == post.writer %}
+{% if user == post.writer %}
 <a href = "{%url 'post:post_edit' post.id%}">수정하기</a>
 <a href = "{%url 'post:post_delete' post.id%}">방 없애기</a>
 {% endif %}
 
-{% if Member.user == post.writer %}
+{% if user == post.writer %}
 
     {% if post.completed is False %}
     <a href="{% url 'post:post_completed' post.id %}">모집 마감하기</a>
