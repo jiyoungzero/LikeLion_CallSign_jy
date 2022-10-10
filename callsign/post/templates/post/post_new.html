@@ -1,33 +1,38 @@
-{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-{% block content %}
+<div class="new_body">
+<button id="back"><img style="width: 50px;" src="../../static/images/back.png"/></button>
 
-<h1>새 방 파는 곳</h1> 
+<!-- <a href="../../../callsign/templates/base.html" -->
+<h1 id="newTitle">새 팀원 모집하기</h1> 
+
+<div class="select_exercise">
+  <label for="exercise">
+  종목
+  </label><br/>
+  <select id="exercise" name="exercise">
+  <option value="">------ 선택하세요 ------</option>
+  {% for e in exercise %}
+  <option value="{{e.id}}">{{ e.name}} </option>
+  {% endfor %}
+
+  </select>
+</div>
+
+<hr/>
 
 {% comment %} 성별, 운동하는 날, 작성자 추가 {% endcomment %}
 <form action="{%url 'post:post_create'%}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
-    <p>제목 : <input type="text" name="title" /></p> 
 
-    <p>모집 마감일(📢방장의 권한에 따라 일찍 마감될 수 있습니다.) : <input type="text" name="end_date" placeholder="YYYY-MM-DD 형식이어야 합니다." style="width:230px;"/></p> 
-    <p>모집 인원 :<input type="text" name="count"  style="width:230px;"/>명 </p>
-    <div class="select_exercise">
-        <label for="exercise">
-        운동종목 :
-        </label>
-        <select id="exercise" name="exercise">
-        <option value="">------ 선택하세요 ------</option>
-        {% for e in exercise %}
-        <option value="{{e.id}}">{{ e.name}} </option>
-        {% endfor %}
-
-        </select>
-    </div>
+    <p id="endDate">일시(모집마감일..?)<br/><input type="text" name="end_date" placeholder="YYYY-MM-DD 형식이어야 합니다." style="width:230px;"/></p> 
+    <hr/>
 
     <div class="select_sex">
       <label for="sex">
-      성별 :
-      </label>
+      성별
+      </label><br/>
       <select id="sex" name="sex">
       <option value="">------ 선택하세요 ------</option>
       {% for s in sex %}
@@ -36,17 +41,28 @@
 
       </select>
     </div>
+    <hr/>
 
-    <p>방장님 오픈채팅 url(자세한 이야기는 여기서!🔐) : <input type="text" name="url" /></p> 
-    <p>
-      내용 :<br>
+    <p id="count">
+      모집 인원 <br/></p>
+      <p id="">
+      A팀 <input type="text" name="needCount" placeholder="모집인원"/> / <input type="text" name="allCount" placeholder="전체인원"/><br/>
+      B팀 <input type="text" name="needCount" placeholder="모집인원"/> / <input type="text" name="allCount" placeholder="전체인원"/></p>
+      <hr/>
+
+    <p id="chatURL">방장님 오픈채팅 url(자세한 이야기는 여기서!🔐)<br/><input type="text" name="url" /></p> 
+    <hr/>
+
+    <p id="new_post_title">제목<br/><input type="text" name="title" /></p> 
+    <hr/>
+
+    <p id="new_post_content">
+      내용<br>
       <textarea type="text" name="body" id="" cols="30" rows="10"></textarea>
     </p>
   
-    <button type="submit">방 올리기</button>
+    <button type="submit">등록 완료하기</button>
   </form>
   
   </form>
-
-  
-{% endblock %}
+</div>

@@ -40,6 +40,7 @@
     width: 154px;
     height: 26px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 /* 탭 전체 스타일 */
@@ -101,4 +102,69 @@ a{
 
 a:active{
     text-decoration-line: none;
+}
+
+#newTitle {
+    font-family: NotoSansKR-Bold;
+    font-size: 60px;
+    margin-bottom: 70px;
+}
+
+#back{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.new_body {
+    margin: 60px;
+}
+
+.select_exercise{
+    font-family: NotoSansKR-Bold;
+    font-size: 35px;    
+    color: #1F2024;
+    margin-bottom: 35px;
+}
+
+#endDate{
+    font-family: NotoSansKR-Bold;
+    font-size: 35px;
+    color: #1F2024;
+    margin-bottom: 35px;
+}
+
+.select_sex {
+    font-family: NotoSansKR-Bold;
+    font-size: 35px;
+    color: #1F2024;
+    margin-bottom: 35px;
+}
+
+#count {
+    font-family: NotoSansKR-Bold;
+    font-size: 35px;
+    color: #1F2024;
+    margin-bottom: 35px;
+}
+
+#chatURL{
+    font-family: NotoSansKR-Bold;
+    font-size: 35px;
+    color: #1F2024;
+    margin-bottom: 35px;
+} 
+
+#new_post_title{
+    font-family: NotoSansKR-Bold;
+    font-size: 35px;
+    color: #1F2024;
+    margin-bottom: 35px;
+}
+
+#new_post_content{
+    font-family: NotoSansKR-Bold;
+    font-size: 35px;
+    color: #1F2024;
+    margin-bottom: 35px;
 }
