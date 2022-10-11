@@ -26,7 +26,11 @@
 <form action="{%url 'post:post_create'%}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
 
-    <p id="endDate">일시(모집마감일..?)<br/><input type="text" name="end_date" placeholder="YYYY-MM-DD 형식이어야 합니다." style="width:230px;"/></p> 
+    <p id="dateTime">일시<br/></p>
+      <p id="dateTime_content">
+      날짜<input type="text" name="end_date" placeholder="YYYY-MM-DD" style="width:230px;"/><br/>
+      시간<input type="text" name="start_hour" placeholder="00">:<input type="text" name="start_mimute" placeholder="00">
+    에서 <input type="text" name="end_hour" placeholder="00">:<input type="text" name="end_mimute" placeholder="00"></p> 
     <hr/>
 
     <div class="select_sex">
