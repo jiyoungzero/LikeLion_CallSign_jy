@@ -46,7 +46,7 @@ body{
     border: none;
     border-radius: 12px;
     font-size: 12px;
-    margin-top: 2vh;
+    margin-top: 15px;
     font-family: NotoSansKR-Bold;
     color: #4B70F3;
     width: 154px;
@@ -141,16 +141,15 @@ a:active{
 
 a {
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: rgb(130, 130, 130);
 }
 
 .navbar {
     display: block;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     text-align: center;
     background:#ffffff;
-    margin-left: 20vw;
 }
 
 .navbar__menu {
@@ -159,19 +158,26 @@ a {
     text-align: center;
     list-style: none;
     font-size: 14px;
-    width: 100%;
+    color: #969696;
     font-family: NotoSansKR-Regular;
     padding-left: 0px;
 }
 
 .navbar__menu li {
     /* margin: 0% 5% 0% 0%; */
-    padding: 10px;
+    padding: 6px 10px;
+    margin: 5px 5px;
+    border-radius: 15px;
+    border-color: #969696;
+    border: 1px solid #969696;
+    /* margin-left: 5%; */
 }
 
 .navbar__menu :hover {
     background-color: #4B70F3;
+    color: white;
     border-radius: 15px;
+    border: 1px solid #4B70F3;
 }
 
 /* 
@@ -200,3 +206,77 @@ a {
         display: flex;
     }
 } */
+
+hr{
+    background-color: #969696;
+    opacity: 0.2;
+    border: 0px;
+    height: 1.5px;
+}
+
+
+#new_post_title_content{
+    font-family: NotoSansKR-Regular;
+    border: 2px solid #C8C8C8;
+    width: 100%;
+    font-size: 25px;
+    border-radius: 10px;
+    margin-top: 15px;
+    padding: 10px 15px;
+    color: #828282;
+}
+
+#new_post_content_content{
+    font-family: NotoSansKR-Regular;
+    border: 2px solid #C8C8C8;
+    width: 100%;
+    font-size: 25px;
+    border-radius: 10px;
+    margin-top: 15px;
+    padding: 10px 15px;
+    color: #828282;
+}
+
+#complete{
+    font-family: NotoSansKR-Bold;
+    width: 100%;
+    height: 100px;
+    border: none;
+    border-radius: 20px;
+    font-size: 25px;
+    background-color: #4B70F3;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+}
+
+.login_whole{
+    background-color: #4B70F3;
+    height: 100%;
+    padding: 30px;
+    text-align: center;
+}
+
+#login_logo{
+    width: 450px;
+    margin: 350px 250px;
+}
+
+#login_button{
+    font-family: NotoSansKR-Bold;
+    background-color: white;
+    border-radius: 25px;
+    border: none;
+    color: #4B70F3;
+    width: 100%;
+    font-size: 30px;
+    height: 120px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+#no_account{
+    font-family: NotoSansKR-Regular;
+    font-size: 30px;
+    color: white;
+}

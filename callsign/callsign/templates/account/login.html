@@ -1,38 +1,40 @@
-{% extends "base.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+
+<div class="login_whole">
 {% load i18n %}
 
 {% block head_title %}{% trans "Log In" %}{% endblock %}
 
 {% block content %}
 
-
-<br><br>
-<div>
-  <div>
-      <div>
-       <h1>LOGIN</h1>
+  <br><br>
+    <div>
         <div>
+          <div>
+            <img id="login_logo" src="../../static/images/logo.png"/>
+            
+            <form class="login" method="POST" action="{% url 'account_login' %}">
+              {% csrf_token %}
+              {{ form.as_p }}
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              {% endif %}
+            <div style="float:center;">
+              <button class="primaryAction" id="login_button" type="submit">로그인하기</button>
+            </form>
 
-          
-          <form class="login" method="POST" action="{% url 'account_login' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            {% if redirect_field_value %}
-            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-            {% endif %}
-           <div style="float:center;">
-            <button class="primaryAction" type="submit">로그인</button>
-          </form>
+            <!-- <button class="primaryAction" type="submit"><a href="{{ signup_url }}">회원가입</a></button> -->
+            </div>
 
-          <button class="primaryAction" type="submit"><a href="{{ signup_url }}">회원가입</a></button>
+            <div id="no_account">
+              <p>{% blocktrans %}아직 계정이 없으신가요?<br/>
+              <a href="{{ signup_url }}" style="color: white; text-decoration: underline;">회원가입하기</a>{% endblocktrans %}</p>
+            </div>
           </div>
-
-    
-          <p>{% blocktrans %}If you have not created an account yet, then please
-          <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-        </div>
+      </div>
     </div>
-  </div>
+
+  {% endblock %}
 </div>
-{% endblock %}
