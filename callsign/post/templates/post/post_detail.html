@@ -32,6 +32,7 @@
     
 {% else %}
 
+{% if post.completed is False %}
 
     <span href="#" class="like" name ="{{post.id}}" value="Like">
         {% if user in post.like_user_set.all %}
@@ -87,5 +88,5 @@
         })
     </script>
 {% endif %}
-
+{% endif %}
 {% endblock %}

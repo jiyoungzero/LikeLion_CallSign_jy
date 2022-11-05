@@ -106,7 +106,7 @@ def post_update(request, id):
     #     update_post.exercise= None
     update_post.sex = get_object_or_404(Sex, id=request.POST['sex'])
     update_post.exercise = get_object_or_404(Exercise, id=request.POST['exercise'])
-    # new_post.writer
+    update_post.writer = request.user
     update_post.pub_date = timezone.now()
     update_post.end_date = request.POST['end_date']
     
