@@ -136,3 +136,7 @@ AUTHENTICATION_BACKENDS=[
 ]
 
 SITE_ID = 1
+
+
+# signup error 해결을 위해 추가
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
