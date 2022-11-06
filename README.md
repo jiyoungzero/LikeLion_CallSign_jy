@@ -1,1 +1,1 @@
-CallSign_Back_jy
+CallSign_공강시간을 이용한 운동 랜덤 매칭 서비스 입니다.
