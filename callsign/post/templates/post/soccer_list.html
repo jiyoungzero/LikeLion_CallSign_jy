@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
 <h1>축구 게시글만 보이는 곳</h1>
 
 {% for s in soccer_list %}
@@ -10,8 +11,9 @@
 모집 마감일 - {{s.end_date}}
 {%endif%}
     <div>
-    <h3>{{s.title}}</h3>
-    {{s.summary}}
+    <h3>{{s.title}}</h3><br>
+    {{s.summary}}<br>
+    모집 시간대 : {{s.start_time}} ~ {{s.end_time}}<br>
     성별 : {{s.sex}}<br>
     <a href = "{%url 'post:post_detail' s.id%}">참여하기</a>
     </div>

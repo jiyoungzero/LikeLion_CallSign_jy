@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
 <h1>테니스 게시글만 보이는 곳</h1>
 <button type="button" onclick="location.href='/post/post_new/';"> 새 팀원 모집하기  </button>
 
@@ -11,8 +12,9 @@
 모집 마감일 - {{t.end_date}}
 {%endif%}
     <div>
-    <h3>{{t.title}}</h3>
-    {{t.summary}}
+    <h3>{{t.title}}</h3><br>
+    {{t.summary}}<br>
+    모집 시간대 : {{t.start_time}} ~ {{t.end_time}}<br>
     성별 : {{t.sex}}<br>
     <a href = "{%url 'post:post_detail' t.id%}">참여하기</a>
     </div>
