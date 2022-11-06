@@ -11,6 +11,7 @@
 <h1>{{post.title}}</h1>
 등록날짜 : {{post.pub_date}}<br>
 모집마감일 : {{post.end_date}}<br>
+모집 시간대 : {{post.start_time}} ~ {{post.end_time}}<br>
 운동종목 : {{post.exercise}}<br>
 성별 : {{post.sex}} <br>
 글쓴사람 : {{post.writer}}<br>
@@ -22,6 +23,7 @@
 {% if user == post.writer %}
 <a href = "{%url 'post:post_edit' post.id%}">수정하기</a>
 <a href = "{%url 'post:post_delete' post.id%}">방 없애기</a>
+<a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
 {% endif %}
 
 {% if user == post.writer %}

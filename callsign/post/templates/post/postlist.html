@@ -6,7 +6,7 @@
 {% block content %}
 
 <hr>
-
+<a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
 
 <div>
   {% for post in posts %}
@@ -15,8 +15,9 @@
   {%endif%}
   <div>
     
-    <h3>{{post.title}}</h3>
+    <h3>{{post.title}}</h3><br>
     {{post.summary}}<br>
+    모집 시간대 : {{post.start_time}} ~ {{post.end_time}}<br>
     성별 : {{post.sex}}<br>
     <a href = "{%url 'post:post_detail' post.id%}">참여하기</a>
   </div><br><br>

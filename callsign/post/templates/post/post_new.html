@@ -7,6 +7,7 @@
 <!-- <a href="../../../callsign/templates/base.html" -->
 <h1 id="newTitle">새 팀원 모집하기</h1> 
 
+
 {% comment %} 성별, 운동하는 날, 작성자 추가 {% endcomment %}
 <form action="{%url 'post:post_create'%}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
@@ -31,9 +32,8 @@
     <p id="dateTime">일시<br/></p>
       <p id="dateTime_content">
       날짜<input type="text" name="end_date" placeholder="YYYY-MM-DD" style="width:230px;"/><br/>
-        <!-- 백에서 추가해야하는거 -->
-      시간<input type="text" name="start_hour" placeholder="00">:<input type="text" name="start_mimute" placeholder="00">
-    에서 <input type="text" name="end_hour" placeholder="00">:<input type="text" name="end_mimute" placeholder="00"></p> 
+        <!-- 백에서 추가해야하는거 : 추가완료 -->
+      시간<input type="text" name="start_time" placeholder="HH:MM"> ~ <input type="text" name="end_time" placeholder="HH:MM"></p> 
     <hr/>
 
     <div class="select_sex">

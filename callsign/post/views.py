@@ -73,8 +73,12 @@ def post_create(request):
     new_post.writer = request.user
     new_post.pub_date = timezone.now()
     
-    # 모집 시작, 마감일 추가
+    # 모집 마감일 추가
     new_post.end_date = request.POST['end_date']
+    
+    # 모집 시작시간, 마감시간 추가
+    new_post.start_time = request.POST['start_time']
+    new_post.end_time = request.POST['end_time']    
     
     new_post.body = request.POST['body']
     new_post.save()
@@ -109,6 +113,10 @@ def post_update(request, id):
     update_post.writer = request.user
     update_post.pub_date = timezone.now()
     update_post.end_date = request.POST['end_date']
+    
+    # 모집 시작시간, 마감시간 추가
+    update_post.start_time = request.POST['start_time']
+    update_post.end_time = request.POST['end_time']  
     
     update_post.body = request.POST['body']
     update_post.save()
