@@ -32,6 +32,10 @@
     
 {% else %}
 
+
+<a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
+
+
 {% if post.completed is False %}
 
     <span href="#" class="like" name ="{{post.id}}" value="Like">

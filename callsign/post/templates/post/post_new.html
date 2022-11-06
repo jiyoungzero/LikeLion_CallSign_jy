@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 <div class="new_body">
-<button id="back" href="#"><img style="width: 50px;" src="../../static/images/back.png"/></button>
+<button id="back" onclick = "location.href = '{{ request.META.HTTP_REFERER }}' "><img style="width: 50px;" src="../../static/images/back.png"/></button>
 
 <!-- <a href="../../../callsign/templates/base.html" -->
 <h1 id="newTitle">새 팀원 모집하기</h1> 
