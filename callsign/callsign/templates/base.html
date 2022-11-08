@@ -13,8 +13,13 @@
 <body>
   <div class="mainHead">
     <h4 id="logo">CallSign</h4>
-    <button id="mypage" onclick="location.href='/accounts/mypage/';">
+    {% if not user.member %}
+    <button id="mypage" onclick="location.href='{% url 'accounts:newinfo' %}'">
       <img style="width: 25px;" src="../../static/images/user.png"/></button>
+    {% else %} 
+      <button id="mypage" onclick="location.href='{% url 'accounts:mypage' %}';">
+        <img style="width: 25px;" src="../../static/images/user.png"/></button>
+    {% endif %}
     <button id="newMember" onclick="location.href='/post/post_new/';"> + 새 팀원 모집하기  </button>
   </div>
 
