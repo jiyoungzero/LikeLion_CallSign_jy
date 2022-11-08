@@ -1,8 +1,4 @@
 
-{% extends 'base.html' %}
-
-{% block content %}
-
 
 {% if post.completed is True %}
 <h1>모집 마감됨</h1>
@@ -38,34 +34,188 @@
 <a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
 
 
+
+
+<!--좋아요를 누르면 팝업이 뜨게 만들기, 여기서 like count가 되야함 / 신청완료하기 = 좋아요 -->
+
+
 {% if post.completed is False %}
+        
+  {% if user in post.like_user_set.all %}
+  <button class="outside-finish">이미 신청이 완료되었습니다</button>
+  {% else %}
+  <button class="outside">참여 신청하기</button>
+  {% endif %}
+      <span id="count-{{post.ids}}" class="alt-services-title font-alt">
+          {% if post.like_count == 0 %}
+              0 / {{post.count}} 
+          {% else %}
+              {{ post.like_count }} /  {{post.count}} 
+          {% endif %}
+      </span>
 
-    <span href="#" class="like" name ="{{post.id}}" value="Like">
-        {% if user in post.like_user_set.all %}
-            <div class="alt-service-icon">
-                <i class="fas fa-heart" id ="like-icon" style="color:red;"></i>
-            </div>
-        {% else %}
-            <div class="alt-service-icon">
-                <i class="far fa-heart" id ="like-icon" style="color:red;"></i>
-            </div>
-        {% endif %}
-            <span id="count-{{post.ids}}" class="alt-services-title font-alt">
-                참여하기
-                {% if post.like_count == 0 %}
-                    0 / {{post.count}} 명
-                {% else %}
-                    {{ post.like_count }} /  {{post.count}} 명
-                {% endif %}
-            </span>
-    </span>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script>
-        $(".like").click(function(){
+<dialog>
+  <div class="dialog__inner">
+    <button class="button button-close close">╳</button>
+    <div class="dialog__content">
+      <h3>신청완료</h3>
+      <p class="sum">
+      종목 : {{post.exercise}}<br>
+      날짜 : {{post.end_date}}<br>
+      시간 : {{post.start_time}} ~ {{post.end_time}}<br>
+      성별 : {{post.sex}} <br></p>
+      <h2>정말 신청을 완료하시겠습니까?</h2>
+      <footer class="like" name ="{{post.id}}" value="Like">
+        <button class="button close">신청 완료하기</button>
+      </footer> 
+    </div>  
+  </div>
+</dialog>
+
+<style>
+
+.outside{
+  padding: 10px;
+  border: none;
+  background-color: #4B70F3;
+  border-radius: 10px;
+  border-color : #4B70F3;
+  font-size: 16px;
+  color:white;
+  outline: none;
+  cursor: pointer;
+}
+
+.outside-finish{
+  border: none;
+  background-color: #DADADA;
+  border-radius: 10px;
+  border-color : #DADADA;
+  font-size: 16px;
+  color: white;
+  outline: none;
+  pointer-events: none;
+  padding: 10px;
+}
+
+.button {
+  padding: 10px;
+  border: none;
+  background-color: #4B70F3;
+  border-radius: 10px;
+  font-size: 15px;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+h3 {
+  font-size: 20px;
+  text-align: center;
+  color : black;
+}
+
+.sum{
+  font-size: 14px;
+  justify-content: center;
+  color: black;
+}
+
+h2 {
+  font-size: 14px;
+  color : black;
+}
+
+.button-close {
+  background-color: transparent;
+  font-size: 14px;
+  box-shadow: none;
+  color: black;
+  padding-left: 90%;
+  text-align: center;
+}
+
+
+dialog {
+  border: none;
+  border-radius: 6px;
+  animation: appear .8s cubic-bezier(.77,0,.175,1) forwards;
+}
+
+.dialog__animate-out{
+  animation: dissappear .8s cubic-bezier(.77,0,.175,1) forwards;
+}
+.dialog__inner {
+  color: white;
+}
+
+.like{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dissappear {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+</style>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+const modal = document.querySelector('dialog');
+const btn = document.querySelector('button');
+const btnClose = document.querySelectorAll('.close');
+
+btn.addEventListener('click', () => openModal());
+btnClose.forEach((elm) => elm.addEventListener('click', () => closeModal()));
+modal.addEventListener('click', (e) => detectBackdropClick(e));
+
+openModal = () => {
+  modal.showModal();
+}
+
+closeModal = () => {
+  modal.classList.add("dialog__animate-out");
+  modal.addEventListener('animationend', handleClose, false);
+}
+
+handleClose = () => {
+  modal.classList.remove("dialog__animate-out");
+  modal.removeEventListener('animationend', handleClose, false);
+  modal.close();
+}
+
+detectBackdropClick = (event) => {
+  if(event.target === modal) {
+    closeModal();
+  }
+}
+$(".like").click(function(){
             var pk=$(this).attr('name')
             $.ajax({
-                 type:'POST',
+                type:'POST',
                 url:"{% url 'post:like_toggle' post.pk %}",
                 data:{'pk':pk,'csrfmiddlewaretoken':'{{csrf_token}}'},
                 dataType:'json',
@@ -92,7 +242,7 @@
                 },
             })
         })
-    </script>
+</script>
+
 {% endif %}
 {% endif %}
-{% endblock %}
