@@ -4,7 +4,7 @@
 
 <form class="new_form" action="{% url 'accounts:information' %}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
-
+    <a href="{% url 'post:postlist' %}">뒤로가기</a>
 <div>
     <div>이름</div>
     <div><input required type="text" name="name" id="name"></div>

@@ -2,22 +2,12 @@
 
 {% block content %}
 <a href="{% url 'post:postlist' %}">뒤로가기</a>
-
 <li><a href="{% url 'accounts:mypost_list' %}">내 모집글({{posts.count}})</a></li>
 <li><a href="{% url 'accounts:mylikepost_list' %}">내 지원글({{like_list.count}})</a></li>
 
 
 
 <div class="container">
-    {% comment %} <h2>id:{{member.user}}</h2>
-    <h2>이름:{{member.name}}</h2>
-    <h2>성별:{{member.gender}}</h2>
-    <h2>좋아하는 운동:{{member.sports}}</h2> {% endcomment %}
-    <h2>내 모집글 ({{posts.count}})</h2>
-    {% for post in posts %}
-    <a href="{% url 'post:post_detail' post.id %}" >{{post.title}}</a><br>
-    {{ post.like_count }} /  {{post.count}} 명
-    {% endfor %}
     <h2>내 지원글 ({{like_list.count}})</h2>
     {% for like in like_list %}
             <a href="{% url 'post:post_detail' like.post.id %}" >{{ like.post.title }}</a><br>

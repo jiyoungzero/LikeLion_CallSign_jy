@@ -1,0 +1,18 @@
+{% block content %}
+
+<a href="{% url 'post:postlist' %}">뒤로가기</a>
+<li><a href="{% url 'accounts:mypage' %}">내 모집글({{posts.count}})</a></li>
+<li><a href="{% url 'accounts:mylikepost_list' %}">내 지원글({{like_list.count}})</a></li>
+
+
+
+<div class="container">
+    <h2>내 모집글 ({{posts.count}})</h2>
+    {% for post in posts %}
+    <a href="{% url 'post:post_detail' post.id %}" >{{post.title}}</a><br>
+    {{ post.like_count }} /  {{post.count}} 명
+    {% endfor %}
+</div> 
+
+
+{% endblock %}
