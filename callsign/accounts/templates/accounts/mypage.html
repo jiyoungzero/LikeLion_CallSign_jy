@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% comment %} 피그마 보면 운동목록없이 모집 현황, 신청목록란으로 나눠있어서 지웠어요! {% extends 'base.html' %} {% endcomment %} 
 
 {% block content %}
 
@@ -8,12 +8,12 @@
     <h2>이름:{{member.name}}</h2>
     <h2>성별:{{member.gender}}</h2>
     <h2>좋아하는 운동:{{member.sports}}</h2> {% endcomment %}
-    <h2> 모집 현황 </h2>
+    <h2> 모집 현황 ({{posts.count}})</h2>
     {% for post in posts %}
     <a href="{% url 'post:post_detail' post.id %}" >{{post.title}}</a><br>
     {{ post.like_count }} /  {{post.count}} 명
     {% endfor %}
-    <h2>신청 목록</h2>
+    <h2>신청 목록 ({{like_list.count}})</h2>
     {% for like in like_list %}
             <a href="{% url 'post:post_detail' like.post.id %}" >{{ like.post.title }}</a><br>
     {% endfor %}
