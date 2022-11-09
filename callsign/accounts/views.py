@@ -21,6 +21,28 @@ def mypage(request):
         }
     return render(request, 'accounts/mypage.html', context)
 
+
+def mypostlist(request):
+    user = request.user
+    member = Member.objects.get(user=user)
+    context = {
+        'member':member,
+        'like_list' : Like.objects.filter(user=user),
+        'posts':Post.objects.filter(writer=user),
+        }
+    return render(request, 'accounts/mypost_list.html', context)
+
+
+def mylikelist(request):
+    user = request.user
+    member = Member.objects.get(user=user)
+    context = {
+        'member':member,
+        'like_list' : Like.objects.filter(user=user),
+        'posts':Post.objects.filter(writer=user),
+        }
+    return render(request, 'accounts/mylikepost_list.html', context)
+
 def newinfo(request):
     return render(request, 'accounts/information.html')
 
