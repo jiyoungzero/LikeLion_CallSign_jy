@@ -4,10 +4,10 @@
 
 
 <div class="container">
-    <h2>id:{{member.user}}</h2>
+    {% comment %} <h2>id:{{member.user}}</h2>
     <h2>이름:{{member.name}}</h2>
     <h2>성별:{{member.gender}}</h2>
-    <h2>좋아하는 운동:{{member.sports}}</h2>
+    <h2>좋아하는 운동:{{member.sports}}</h2> {% endcomment %}
     <h2> 모집 현황 </h2>
     {% for post in posts %}
     <a href="{% url 'post:post_detail' post.id %}" >{{post.title}}</a><br>
