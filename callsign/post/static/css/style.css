@@ -39,6 +39,7 @@ body{
     position: absolute;
     right: 5px;
     top: 18px;
+    cursor: pointer;
 }
 
 #newMember {
