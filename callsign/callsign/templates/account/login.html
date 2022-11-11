@@ -1,5 +1,5 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
 
 
 <div class="login_whole">
@@ -29,8 +29,8 @@
             </div>
 
             <div id="no_account">
-              <p>{% blocktrans %}아직 계정이 없으신가요?<br/>
-              <a href="{{ signup_url }}" style="color: white; text-decoration: underline;">회원가입하기</a>{% endblocktrans %}</p>
+              <a>{% blocktrans %}아직 계정이 없으신가요?<br/>
+              <a href="{{ signup_url }}" style="color: white; text-decoration: underline;">회원가입하기</a>{% endblocktrans %}</a>
             </div>
           </div>
       </div>
