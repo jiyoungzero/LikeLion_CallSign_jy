@@ -17,68 +17,76 @@ body{
     margin: 0px;
 }
 
+#newTitle {
+    font-family: NotoSansKR-Bold;
+    font-size: 70px;
+    margin-bottom: 10px;
+    font-weight: 100;
+}
+
+#intro {
+    font-family: NotoSansKR-Regular;
+    font-size: 28px;
+    margin-bottom: 80px;
+}
+
+#back{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.new_body {
+    margin: 60px;
+}
+
 p{
     text-align: left;
     font-size: 40px;
     border-bottom: solid 5px white;
-    margin-bottom: 80px;
+    margin-bottom: 70px;
 }
 
 label{
-    color: white;
+    color: rgb(0, 0, 0);
     align-items: left;
     font-family: NotoSansKR-Bold;
 }
 
 input {
-    border : none;
-    background-color: #4B70F3;
-    padding: 30px 200px 30px 20px;
-    margin-bottom: 30px;
+    border: solid 2px gray;
+    border-radius: 10px;
+    padding: 30px 0px 30px 20px;
+    width: 100%;
+    margin-top: 35px;
+    margin-bottom: 20px;
     height: 40px;
     font-size: 35px;
     font-family: NotoSansKR-Bold;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 input::placeholder{
-    color: #4B70F3;
+    color: #ffffff;
 }
 
 input:focus{
     outline : none;
-    background-color: #4B70F3;
+    background-color: #ffffff;
     padding: 30px 200px 30px 20px;
     margin-bottom: 30px;
     height: 40px;
     font-size: 35px;
-    color: white;
+    color: rgb(0, 0, 0);
     font-family: NotoSansKR-Bold;
 }
 
-.login_whole{
+#signUp_button{
+    font-family: NotoSansKR-Bold;
     background-color: #4B70F3;
-    background-size: cover;
-    padding: 30px;
-    text-align: center;
-}
-
-#login_logo{
-    width: 450px;
-    margin: 350px 250px;
-
-}
-
-form{
-    margin: 0px 40px;
-}
-
-#login_button{
-    font-family: NotoSansKR-Bold;
-    background-color: white;
     border-radius: 25px;
     border: none;
-    color: #4B70F3;
+    color: white;
     width: 100%;
     font-size: 38px;
     height: 130px;
@@ -86,9 +94,10 @@ form{
     cursor: pointer;
 }
 
-#no_account{
-    font-family: NotoSansKR-Regular;
+#have_account{
+    text-align: center;
+    font-family: NotoSansKR-Bold;
     font-size: 30px;
-    color: white;
+    color: rgb(0, 0, 0);
     margin-bottom: 200px;
 }
