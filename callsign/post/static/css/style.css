@@ -25,6 +25,12 @@ body{
     text-align: center;
 }
 
+.login_whole{
+    background-color: #4B70F3;
+    width:100%;
+    height: 100%;
+}
+
 #logo {
     margin:0px;
     font-family: Montserrat_EBI;
@@ -241,43 +247,12 @@ hr{
 #complete{
     font-family: NotoSansKR-Bold;
     width: 100%;
-    height: 100px;
+    height: 300%;
     border: none;
     border-radius: 20px;
     font-size: 25px;
     background-color: #4B70F3;
-    color: white;
+    color: #4B70F3;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     cursor: pointer;
-}
-
-.login_whole{
-    background-color: #4B70F3;
-    height: 100%;
-    padding: 30px;
-    text-align: center;
-}
-
-#login_logo{
-    width: 450px;
-    margin: 350px 250px;
-}
-
-#login_button{
-    font-family: NotoSansKR-Bold;
-    background-color: white;
-    border-radius: 25px;
-    border: none;
-    color: #4B70F3;
-    width: 100%;
-    font-size: 30px;
-    height: 120px;
-    margin-bottom: 20px;
-    cursor: pointer;
-}
-
-#no_account{
-    font-family: NotoSansKR-Regular;
-    font-size: 30px;
-    color: white;
 }
