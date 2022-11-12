@@ -13,7 +13,7 @@
 <body>
   <div class="mainHead">
     <button id="back" onclick = "location.href = '{{ request.META.HTTP_REFERER }}' "><img style="width: 50px;" src="../../static/images/back.png"/></button>
-    <h4 id="logo">CallSign</h4>
+    <h4 id="logo">{{post.title}}</h4>
   </div>
 
 
@@ -78,7 +78,7 @@
     </div>
 </div>
 
-<nav class="navbar">
+{% comment %} <nav class="navbar">
   <ul class="navbar__menu">
       <li><a href="{% url 'post:soccer_list' %}">축구</a></li>
       <li><a href="{% url 'post:basketball_list' %}">농구</a></li>
@@ -87,7 +87,7 @@
       <li><a href="{%url 'post:tennis_list' %}">테니스</a></li>
       <li><a href="{%url 'post:badminton_list' %}">배드민턴</a></li>
   </ul>
-</nav>
+</nav> {% endcomment %}
 
     <div class="container">
         {% block content %}
