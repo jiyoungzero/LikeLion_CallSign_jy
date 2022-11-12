@@ -10,7 +10,11 @@
 <div class="container">
     <h2>내 지원글 ({{like_list.count}})</h2>
     {% for like in like_list %}
-            <a href="{% url 'post:post_detail' like.post.id %}" >{{ like.post.title }}</a><br>
+            {{ like.post.title }}<br>
+            {{like.post.start_time}} ~ {{like.post.end_time}} <br>
+            <a href = "{%url 'post:post_detail' like.post.id%}">자세히보기</a><br>
+            {{ like.post.like_count }} /  {{like.post.count}} 명<br>
+            <br>
     {% endfor %}
 </div> 
 

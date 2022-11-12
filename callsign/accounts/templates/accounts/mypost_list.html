@@ -9,8 +9,11 @@
 <div class="container">
     <h2>내 모집글 ({{posts.count}})</h2>
     {% for post in posts %}
-    <a href="{% url 'post:post_detail' post.id %}" >{{post.title}}</a><br>
-    {{ post.like_count }} /  {{post.count}} 명
+        {{post.title}}<br>
+        {{post.start_time}} ~ {{post.end_time}} <br>
+        <a href = "{%url 'post:post_detail' post.id%}">자세히보기</a><br>
+        {{ post.like_count }} /  {{post.count}} 명<br>
+        <br>
     {% endfor %}
 </div> 
 

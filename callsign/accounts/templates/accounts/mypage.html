@@ -9,18 +9,23 @@
 
 
 <div class="container">
-    {% comment %} <h2>id:{{member.user}}</h2>
-    <h2>이름:{{member.name}}</h2>
-    <h2>성별:{{member.gender}}</h2>
-    <h2>좋아하는 운동:{{member.sports}}</h2> {% endcomment %}
+
     <h2>내 모집글 ({{posts.count}})</h2>
     {% for post in posts %}
-    <a href="{% url 'post:post_detail' post.id %}" >{{post.title}}</a><br>
-    {{ post.like_count }} /  {{post.count}} 명
+        {{post.title}}<br>
+        {{post.start_time}} ~ {{post.end_time}} <br>
+        <a href = "{%url 'post:post_detail' post.id%}">자세히보기</a><br>
+        {{ post.like_count }} /  {{post.count}} 명<br>
+        <br>
     {% endfor %}
+
     <h2>내 지원글 ({{like_list.count}})</h2>
     {% for like in like_list %}
-            <a href="{% url 'post:post_detail' like.post.id %}" >{{ like.post.title }}</a><br>
+            {{ like.post.title }}<br>
+            {{like.post.start_time}} ~ {{like.post.end_time}} <br>
+            <a href = "{%url 'post:post_detail' like.post.id%}">자세히보기</a><br>
+            {{ like.post.like_count }} /  {{like.post.count}} 명<br>
+            <br>
     {% endfor %}
 </div> 
 
