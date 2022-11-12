@@ -1,0 +1,42 @@
+<style>
+    
+    .outside-finish{
+      border: none;
+      background-color: #DADADA;
+      border-radius: 10px;
+      border-color : #DADADA;
+      font-size: 16px;
+      color: white;
+      outline: none;
+      pointer-events: none;
+      padding: 10px;
+    }
+    
+    </style>
+  
+  
+  
+  <h1>모집 마감됨resulthtml</h1>
+
+  
+  <a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
+  
+  등록날짜 : {{post.pub_date}}<br>
+  모집마감일 : {{post.end_date}}<br>
+  모집 시간대 : {{post.start_time}} ~ {{post.end_time}}<br>
+  운동종목 : {{post.exercise}}<br>
+  성별 : {{post.sex}} <br>
+  글쓴사람 : {{post.writer}}<br>
+  방장님 오픈채팅 url : {{ post.url|urlize }}
+  <hr>
+  {% comment %} {{post.url}} {% endcomment %}
+  <p>{{post.body}}</p>
+    
+  <button class="outside-finish">모집이 마감되었습니다</button>
+    A팀  {{split_list.A}} 
+    B팀 {{split_list.B}}
+  
+    <a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
+
+  
+

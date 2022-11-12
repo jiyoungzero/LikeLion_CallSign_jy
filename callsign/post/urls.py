@@ -35,4 +35,8 @@ urlpatterns = [
     path('<int:id>/post_completed/',post_completed, name="post_completed"),
     path('like_toggle/<int:post_id>', like_toggle, name="like_toggle"),
     path('my_like/<int:user_id>', my_like, name="my_like"),
+
+    # 랜덤매칭
+    path('split_list', split_list, name="split_list"),
+
 ]
