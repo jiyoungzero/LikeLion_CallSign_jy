@@ -117,7 +117,7 @@ a:active{
     width: 100%;
     font-family: NotoSansKR-Bold;
     font-size: 25px;
-    color: #828282;
+    color: #4B70F3;
     margin-bottom: 30px;
 }
 
@@ -125,7 +125,7 @@ a:active{
     width: 100%;
     font-family: NotoSansKR-Bold;
     font-size: 25px;
-    color: #828282;
+    color: #4B70F3;
     margin-bottom: 60px;
 }
 
@@ -180,6 +180,22 @@ a:active{
     border-radius: 10px;
     padding: 10px 15px;
     font-size: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+#TeamA{
+    width: 100%;
+    font-family: NotoSansKR-Bold;
+    font-size: 25px;
+    color: #4B70F3;
+}
+
+#TeamB{
+    width: 100%;
+    font-family: NotoSansKR-Bold;
+    font-size: 25px;
+    color: #4B70F3;
     margin-bottom: 60px;
 }
 
