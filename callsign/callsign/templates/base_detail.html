@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'css/style_detail.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallSign</title>
+</head>
+<body>
+  <div class="mainHead">
+    <button id="back" onclick = "location.href = '{{ request.META.HTTP_REFERER }}' "><img style="width: 50px;" src="../../static/images/back.png"/></button>
+    <h4 id="logo">CallSign</h4>
+  </div>
+
+
+  <div class="nav_container">
+
+    <div class="container">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="{%url 'post:etc_list' %}"
+              >기타</a>
+          </li>
+
+          {% if user.is_authenticated %}
+          {% if not user.member %}
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="{% url 'accounts:newinfo' %}"
+              >정보입력</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="{% url 'account_logout' %}"?next="{{request.path}}">로그아웃</a>
+          </li>
+          {% else %} 
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="{% url 'accounts:mypage' %}"
+              >mypage</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="{% url 'account_logout' %}?next={{ request.path }}"
+              >로그아웃</a>
+          </li>
+          {% endif %}
+          {% else %}
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="{% url 'account_signup' %}?next={% url 'accounts:newinfo' %}"
+              >회원가입</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="{% url 'account_login' %}?next={{ request.path }}"
+              >로그인</a>
+          </li>
+          {% endif%}
+    </div>
+</div>
+
+<nav class="navbar">
+  <ul class="navbar__menu">
+      <li><a href="{% url 'post:soccer_list' %}">축구</a></li>
+      <li><a href="{% url 'post:basketball_list' %}">농구</a></li>
+      <li><a href="{%url 'post:volleyball_list' %}">배구</a></li>
+      <li><a href="{%url 'post:baseball_list' %}">야구</a></li>
+      <li><a href="{%url 'post:tennis_list' %}">테니스</a></li>
+      <li><a href="{%url 'post:badminton_list' %}">배드민턴</a></li>
+  </ul>
+</nav>
+
+    <div class="container">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+</body>
+</html>

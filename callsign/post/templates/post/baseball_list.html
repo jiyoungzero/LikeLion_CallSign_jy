@@ -2,10 +2,8 @@
 
 {% block content %}
 
-<a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
 <h1>야구 게시글만 보이는 곳</h1>
 
-<button type="button" onclick="location.href='/post/post_new/';"> 새 팀원 모집하기  </button>
 
 {% for b in baseball_list %}
 {%if b.flag_enddate == False %}

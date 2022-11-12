@@ -2,9 +2,7 @@
 
 {% block content %}
 
-<a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
 <h1>테니스 게시글만 보이는 곳</h1>
-<button type="button" onclick="location.href='/post/post_new/';"> 새 팀원 모집하기  </button>
 
 {% for t in tennis_list %}
 {%if t.flag_enddate == False %}
