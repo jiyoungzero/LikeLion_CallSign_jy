@@ -25,8 +25,12 @@ def postlist(request):
 
 def post_detail(request, id):
     post = get_object_or_404(Post, pk = id)
-    return render(request, 'post/post_detail.html', {'post':post})
-
+    
+    if (post.completed is True) or
+        (post.like_count == post.count) :
+        return render(request, 'post/result.html', {'post':post})
+    else :
+        return render(request, 'post/post_detail.html', {'post':post})
 # 권한부여 
 
 def post_completed(request, id):
@@ -35,7 +39,7 @@ def post_completed(request, id):
     completed_exercise = Exercise.objects.all()
     completed_post.completed=True
     completed_post.save()
-    return redirect('post:post_detail', completed_post.id)
+    return redirect('post:completed_detail', completed_post.id)
 
 def completed_postlist(request):
     posts = Post.objects.filter(completed=True).order_by('end_date') # 모집 마감일 급한 것 부터 정렬
@@ -53,7 +57,7 @@ def completed_postlist(request):
 def completed_detail(request, id) :
     post = get_object_or_404(Post, pk = id)
 
-    return render(request, 'post/post_completed.html', {'post':post})
+    return render(request, 'post/result.html', {'post':post})
 
 
 
@@ -419,51 +423,25 @@ def like_toggle(request, post_id):
 # 랜덤매칭 suffle, len
 # 게시물에 좋아요 누른 사람을 다 불러온다.(post.like_user_set_all)
 # 유저 리스트 순서를 섞고(random.suffle) 그 다음 반(len,:half)으로 뽀갠다. 
-# strings = ['a','b','c','d','e','f']
-#   random.shuffle(strings)
-#   print(strings) 
-# def split_list(a_list):
-#     half = len(a_list)//2
-#     return a_list[:half], a_list[half:]
-
-#   A = ['a','b','c','d','e','f']
-#   B, C = split_list(A)
-    # print(B)
-    # print(C)
-
- 
-    # def mach(request, post_id):
-    # # 그 게시물에서 좋아요 누른인간을 불러온다 - userid likeobject
-    # queryset_user = Post.like_user_set.all() 
-    # # 유저리스트를 섞는다
-    # strings = ['Post.like_user_set.all']
-    #     random.shuffle(strings)
-    #     print (strings)
-
-    # # 섞은걸 반으로 나눈다.
-    # def split_list(c_list):
-    #     half = len(c_list)
-    #     return c_list[:half], c_list[half:]
-
-    #     C = [strings]
-    #     A, B = split_list(C)
-    #     print(A)
-    #     print(B)
-
-    # # 출력 ! 
-    # return render(request, 'post/result.html',context)
 
     # 반으로만 뽀개기
-    # def split_list(request, c_list):
+def split_list(request, like_list, user_id, id):
+        # 좋아요 누른 사람을 불러온다
+    post = Post.objects.get(id=id)
+    like_count = Like.objects.get(id=user_id)
         
-    #     half = len(c_list)
-    #     return c_list[:half], c_list[half:]
+    half = len(like_list)
+    return a_list[:half], b_list[half:]
 
-    #     C = [strings]
-    #     A, B = split_list(C)
-    #     print(A)
-    #     print(B)
+    LIKE_LIST = [like_count]
+    A, B = split_list(LIKE_LIST)
 
+    context = {
+    'B' : split_list.B,
+    'A' : split_list.A
+    }
+
+    return render(request, 'post/result.html',context)
 
 
 # 모르겠다/////......

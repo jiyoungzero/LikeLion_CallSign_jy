@@ -107,17 +107,7 @@
   }
   </style>
 
-{% extends 'base_detail.html' %}
 
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-{% block content %}
-
-
-{% if post.completed is True %}
-<h1>모집 마감됨</h1>
-{% endif %}
 
 <a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
 
@@ -302,4 +292,4 @@ $(".like").click(function(){
 {% endif %}
 {% endif %}
 
-{% endblock %}
+
