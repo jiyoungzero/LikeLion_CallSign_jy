@@ -165,7 +165,7 @@ def basketball_list(request):
 
 def volleyball_list(request):
     volleyball_list = []
-    v = Exercise.objects.filter(name="배구")
+    v = Exercise.objects.filter(name="족구")
     v_post = Post.objects.filter(exercise__in=v, completed=False).order_by('end_date')
     
     for post in v_post:
@@ -299,7 +299,7 @@ def completed_basketball_list(request):
 
 def completed_volleyball_list(request):
     volleyball_list = []
-    v = Exercise.objects.filter(name="배구")
+    v = Exercise.objects.filter(name="족구")
     v_post = Post.objects.filter(exercise__in=v, completed=True).order_by('end_date')
     
     for post in v_post:
