@@ -37,6 +37,6 @@ urlpatterns = [
     path('my_like/<int:user_id>', my_like, name="my_like"),
 
     # 랜덤매칭
-    path('split_list', split_list, name="split_list"),
+    # path('split_list', split_list, name="split_list"),
 
 ]
