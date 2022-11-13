@@ -26,8 +26,8 @@ def postlist(request):
 def post_detail(request, id):
     post = get_object_or_404(Post, pk = id)
     
-    if (post.completed is True) or
-        (post.like_count == post.count) :
+    if (post.completed is True) :
+        # (post.like_count == post.count) :
         return render(request, 'post/result.html', {'post':post})
     else :
         return render(request, 'post/post_detail.html', {'post':post})
@@ -424,24 +424,24 @@ def like_toggle(request, post_id):
 # 게시물에 좋아요 누른 사람을 다 불러온다.(post.like_user_set_all)
 # 유저 리스트 순서를 섞고(random.suffle) 그 다음 반(len,:half)으로 뽀갠다. 
 
-    # 반으로만 뽀개기
-def split_list(request, like_list, user_id, id):
-        # 좋아요 누른 사람을 불러온다
-    post = Post.objects.get(id=id)
-    like_count = Like.objects.get(id=user_id)
+#     # 반으로만 뽀개기
+# def split_list(request, like_list, user_id, id):
+#         # 좋아요 누른 사람을 불러온다
+#     post = Post.objects.get(id=id)
+#     like_count = Like.objects.get(id=user_id)
         
-    half = len(like_list)
-    return a_list[:half], b_list[half:]
+#     half = len(like_list)
+#     return a_list[:half], b_list[half:]
 
-    LIKE_LIST = [like_count]
-    A, B = split_list(LIKE_LIST)
+#     LIKE_LIST = [like_count]
+#     A, B = split_list(LIKE_LIST)
 
-    context = {
-    'B' : split_list.B,
-    'A' : split_list.A
-    }
+#     context = {
+#     'B' : split_list.B,
+#     'A' : split_list.A
+#     }
 
-    return render(request, 'post/result.html',context)
+#     return render(request, 'post/result.html',context)
 
 
 # 모르겠다/////......
