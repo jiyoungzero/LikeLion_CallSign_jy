@@ -32,12 +32,27 @@ body{
 }
 
 #list_title{
-    font-size: 16px;
+    font-size: 14px;
     font-family: NotoSansKR-Bold;
+}
+
+#time{
+    font-size: 12px;
+    font-family: NotoSansKR-Regular;
 }
 
 #endDate{
     font-family: NotoSansKR-Bold;
-    font-size: 16px;
+    font-size: 14px;
     color: #4B70F3;
+}
+
+#joinButton{
+    background-color: #4B70F3;
+    color : white;
+    font-family: NotoSansKR-Bold;
+    border: none;
+    font-size: 10px;
+    border-radius: 15px;
+    padding: 4px 15px;
 }

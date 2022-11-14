@@ -13,12 +13,11 @@
         <div id="list">
             <p id="list_title">{{s.title}}</p>
             <!-- {{s.summary}}<br> -->
-            모집 시간대 : {{s.start_time}} ~ {{s.end_time}}<br>
+            <p id="time">{{s.start_time}} ~ {{s.end_time}}</p><br>
             <!-- 성별 : {{s.sex}}<br> -->
-            <a href = "{%url 'post:post_detail' s.id%}">참여하기</a><br/><br/>
+            <a href = "{%url 'post:post_detail' s.id%}"><button id="joinButton">자세히보기</button></a><br/><br/>
         </div>
     {% endfor %} 
-
 
     <a href="{% url 'post:completed_soccer_list' %}"> 완료된 게시글 보기</a>
     <a href="{% url 'post:soccer_list' %}"> 모집중인 게시글 보기</a>
