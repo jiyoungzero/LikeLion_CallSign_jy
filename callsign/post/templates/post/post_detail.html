@@ -110,7 +110,7 @@
   {% extends 'base_detail.html' %}
 
   {% load static %}
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style_detail.css' %}">
   
   {% block content %}
   
@@ -119,18 +119,14 @@
   <h1>모집 마감됨</h1>
   {% endif %}
   
-  <a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a><br>
-  
-  등록날짜 : {{post.pub_date}}<br>
-  모집마감일 : {{post.end_date}}<br>
-  모집 시간대 : {{post.start_time}} ~ {{post.end_time}}<br>
-  운동종목 : {{post.exercise}}<br>
-  성별 : {{post.sex}} <br>
-  글쓴사람 : {{post.writer}}<br>
-  방장님 오픈채팅 url : {{ post.url|urlize }}
-  <hr>
+  <!-- 등록날짜 : {{post.pub_date}}<br> -->
+  <!-- {{post.end_date}} {{post.start_time}} ~ {{post.end_time}}<br> -->
+  <!-- 운동종목 : {{post.exercise}}<br> -->
+  <!-- 성별 : {{post.sex}} <br> -->
+  <!-- 글쓴사람 : {{post.writer}}<br> -->
+  <!-- 방장님 오픈채팅 url : {{ post.url|urlize }} -->
   {% comment %} {{post.url}} {% endcomment %}
-  <p>{{post.body}}</p>
+  <!-- <p>{{post.body}}</p> -->
   
   {% if user == post.writer %}
   <a href = "{%url 'post:post_edit' post.id%}">수정하기</a>
@@ -207,13 +203,13 @@
   {% else %}
   <button class="outside">참여 신청하기</button>
   {% endif %}
-      <span id="count-{{post.ids}}" class="alt-services-title font-alt">
+      <!-- <span id="count-{{post.ids}}" class="alt-services-title font-alt">
           {% if post.like_count == 0 %}
               0 / {{post.count}} 
           {% else %}
               {{ post.like_count }} /  {{post.count}} 
           {% endif %}
-      </span>
+      </span> -->
 
 
 <dialog>
@@ -284,7 +280,7 @@ $(".like").click(function(){
                             $('#like-icon').addClass('fas fa-heart');
                         }
                         else{
-                             $('#like-icon').removeClass();
+                            $('#like-icon').removeClass();
                             $('#like-icon').addClass('far fa-heart');
                         }
                         $('#count-{{post.id}}').html('참여하기 '+response.like_count+"명");
