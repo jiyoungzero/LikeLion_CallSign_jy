@@ -2,8 +2,8 @@
 
 {% block content %}
 
-<h1>야구 게시글만 보이는 곳</h1>
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style_list.css' %}">
 
 {% for b in baseball_list %}
 {%if b.flag_enddate == False %}
