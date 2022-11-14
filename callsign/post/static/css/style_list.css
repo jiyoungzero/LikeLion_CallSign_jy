@@ -31,6 +31,7 @@ body{
     margin-bottom: 30px;
 }
 
+
 #list_title{
     font-size: 14px;
     font-family: NotoSansKR-Bold;
@@ -48,6 +49,8 @@ body{
 }
 
 #joinButton{
+    position: absolute;
+    display: flex-end;
     background-color: #4B70F3;
     color : white;
     font-family: NotoSansKR-Bold;
@@ -55,4 +58,5 @@ body{
     font-size: 10px;
     border-radius: 15px;
     padding: 4px 15px;
+    cursor: pointer;
 }

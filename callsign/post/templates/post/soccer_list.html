@@ -13,9 +13,9 @@
         <div id="list">
             <p id="list_title">{{s.title}}</p>
             <!-- {{s.summary}}<br> -->
-            <p id="time">{{s.start_time}} ~ {{s.end_time}}</p><br>
-            <!-- 성별 : {{s.sex}}<br> -->
-            <a href = "{%url 'post:post_detail' s.id%}"><button id="joinButton">자세히보기</button></a><br/><br/>
+                <p id="time">{{s.start_time}} ~ {{s.end_time}}</p><br>
+                <!-- 성별 : {{s.sex}}<br> -->
+                <a href = "{%url 'post:post_detail' s.id%}"><button id="joinButton">자세히보기</button></a><br/><br/>
         </div>
     {% endfor %} 
 
