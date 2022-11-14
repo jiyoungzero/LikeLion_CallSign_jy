@@ -5,20 +5,21 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/style_list.css' %}">
 
-{% for t in tennis_list %}
-{%if t.flag_enddate == False %}
-<br>
-모집 마감일 - {{t.end_date}}
-{%endif%}
-    <div>
-    <h3>{{t.title}}</h3><br>
-    {{t.summary}}<br>
-    모집 시간대 : {{t.start_time}} ~ {{t.end_time}}<br>
-    성별 : {{t.sex}}<br>
-    <a href = "{%url 'post:post_detail' t.id%}">참여하기</a>
-    </div>
-{% endfor %} 
+<div id="list_body">
+    {% for t in tennis_list %}
+    {%if t.flag_enddate == False %}
+    <p id="endDate">{{t.end_date}}</p>
+    {%endif%}
+        <div id="list">
+            <p id="list_title">{{t.title}}</p>
+            <!-- {{v.summary}}<br> -->
+            <p id="time">{{t.start_time}} ~ {{t.end_time}}</p>
+            <!-- 성별 : {{v.sex}}<br> -->
+            <a href = "{%url 'post:post_detail' t.id%}">참여하기</a>
+        </div>
+    {% endfor %} 
 
-<a href="{% url 'post:completed_tennis_list' %}"> 완료된 게시글 보기</a>
-<a href="{% url 'post:tennis_list' %}"> 모집중인 게시글 보기</a>
+    <a href="{% url 'post:completed_tennis_list' %}"> 완료된 게시글 보기</a>
+    <a href="{% url 'post:tennis_list' %}"> 모집중인 게시글 보기</a>
+</div>
 {% endblock %}
