@@ -35,11 +35,20 @@ body{
 #list_title{
     font-size: 14px;
     font-family: NotoSansKR-Bold;
+    margin-bottom: 0;
+}
+
+#list_content{
+    display:contents;
+    position: absolute;
+    float: left;
 }
 
 #time{
     font-size: 12px;
     font-family: NotoSansKR-Regular;
+    display: flex;
+    float: left;
 }
 
 #endDate{
@@ -49,8 +58,7 @@ body{
 }
 
 #joinButton{
-    position: absolute;
-    display: flex-end;
+    float: right;
     background-color: #4B70F3;
     color : white;
     font-family: NotoSansKR-Bold;
@@ -59,4 +67,8 @@ body{
     border-radius: 15px;
     padding: 4px 15px;
     cursor: pointer;
+    display: flex;
+    position: relative;
+    margin-top: 9px;
+    margin-right: 10px;
 }

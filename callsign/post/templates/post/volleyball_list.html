@@ -8,19 +8,18 @@
 <div id="list_body">
     {% for v in volleyball_list %}
     {%if v.flag_enddate == False %}
-    <br>
-    모집 마감일 - {{v.end_date}}
+    <p id="endDate">{{v.end_date}}</p>
     {%endif%}
-        <div>
-        <h3>{{v.title}}</h3><br>
-        {{v.summary}}<br>
-        모집 시간대 : {{v.start_time}} ~ {{v.end_time}}<br>
-        성별 : {{v.sex}}<br>
-        <a href = "{%url 'post:post_detail' v.id%}">참여하기</a>
+        <div id="list">
+            <p id="list_title">{{v.title}}</p>
+            <!-- {{v.summary}}<br> -->
+            <p id="time">{{v.start_time}} ~ {{v.end_time}}</p>
+            <!-- 성별 : {{v.sex}}<br> -->
+            <a href = "{%url 'post:post_detail' v.id%}">참여하기</a>
         </div>
     {% endfor %} 
-</div>
 
-<a href="{% url 'post:completed_volleyball_list' %}"> 완료된 게시글 보기</a>
-<a href="{% url 'post:volleyball_list' %}"> 모집중인 게시글 보기</a>
+    <a href="{% url 'post:completed_volleyball_list' %}"> 완료된 게시글 보기</a>
+    <a href="{% url 'post:volleyball_list' %}"> 모집중인 게시글 보기</a>
+</div>
 {% endblock %}

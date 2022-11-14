@@ -13,10 +13,12 @@
     {%endif%}
         <div id="list">
             <p id="list_title">{{b.title}}</p>
-            <!-- {{b.summary}}<br> -->
-            <p id="time">{{b.start_time}} ~ {{b.end_time}}</p><br>
-            <!-- 성별 : {{b.sex}}<br> -->
-            <a href = "{%url 'post:post_detail' b.id%}"><button id="joinButton">자세히보기</button></a><br/><br/>
+            <div id="list_content">
+                <!-- {{b.summary}}<br> -->
+                <p id="time">{{b.start_time}} ~ {{b.end_time}}</p>
+                <!-- 성별 : {{b.sex}}<br> -->
+                <a href = "{%url 'post:post_detail' b.id%}"><button id="joinButton">자세히보기</button></a><br/><br/>
+            </div>
         </div>
     {% endfor %} 
 
