@@ -12,30 +12,46 @@
       padding: 10px;
     }
     
+    
     </style>
   
-  
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>  
   
   <h1>모집 마감됨resulthtml</h1>
 
   
   <a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
-  
+  {% for post in posts %}
+  제목 : {{post.title}} <br>
   등록날짜 : {{post.pub_date}}<br>
   모집마감일 : {{post.end_date}}<br>
   모집 시간대 : {{post.start_time}} ~ {{post.end_time}}<br>
   운동종목 : {{post.exercise}}<br>
   성별 : {{post.sex}} <br>
   글쓴사람 : {{post.writer}}<br>
-  방장님 오픈채팅 url : {{ post.url|urlize }}
+  방장님 오픈채팅 url : {{ post.url|urlize }} <br>
+  모집인원  {{post.count}} 명<br>
+  신청인원  {{ post.like_count }} 명
+ 
   <hr>
   {% comment %} {{post.url}} {% endcomment %}
   <p>{{post.body}}</p>
+  {% endfor %}
+  <p>
+    {% for like in random %}
     
+    <div style="margin:10px;padding:10px;background-color:#E7ECFF;width:64px;text-align: center;border-radius: 10px;">
+              {{like.user}}
+      </div>
+    {% endfor %}
+
+  </p>
+
   <button class="outside-finish">모집이 마감되었습니다</button>
-    A팀  {{split_list.A}} 
-    B팀 {{split_list.B}}
-  
+
     <a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
 
   

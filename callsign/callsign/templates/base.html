@@ -13,6 +13,14 @@
 <body>
   <div class="mainHead">
     <h4 id="logo">CallSign</h4>
+    <!-- 로그인 안했을 때 : 로그인 -->
+     <button id="mypage" onclick="location.href='{% url 'account_login' %}?next={{ request.path }}'">
+      <img style="width: 25px;" src="../../static/images/user.png"/></button>
+    <!-- 로그인 했을 때 : 마이페이지, 로그아웃 -->
+    {% if user.is_authenticated %}
+    <a class="nav-link active"  aria-current="page" href="{% url 'account_logout' %}?next={{ request.path }}"\
+    style="position:absolute;top:23px;right:34px;">
+      <i class="fa-solid fa-right-from-bracket" style="color:white;width:45px;"></i></a>
     {% if not user.member %}
     <button id="mypage" onclick="location.href='{% url 'accounts:newinfo' %}'">
       <img style="width: 25px;" src="../../static/images/user.png"/></button>
@@ -20,70 +28,10 @@
       <button id="mypage" onclick="location.href='{% url 'accounts:mypage' %}';">
         <img style="width: 25px;" src="../../static/images/user.png"/></button>
     {% endif %}
+    {% endif %}
     <button id="newMember" onclick="location.href='/post/post_new/';"> + 새 팀원 모집하기  </button>
   </div>
 
-
-  <div class="nav_container">
-
-    <div class="container">
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              href="{%url 'post:etc_list' %}"
-              >기타</a>
-          </li>
-
-          {% if user.is_authenticated %}
-          {% if not user.member %}
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              href="{% url 'accounts:newinfo' %}"
-              >정보입력</a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              href="{% url 'account_logout' %}"?next="{{request.path}}">로그아웃</a>
-          </li>
-          {% else %} 
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              href="{% url 'accounts:mypage' %}"
-              >mypage</a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              href="{% url 'account_logout' %}?next={{ request.path }}"
-              >로그아웃</a>
-          </li>
-          {% endif %}
-          {% else %}
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              href="{% url 'account_signup' %}?next={% url 'accounts:newinfo' %}"
-              >회원가입</a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              href="{% url 'account_login' %}?next={{ request.path }}"
-              >로그인</a>
-          </li>
-          {% endif%}
-    </div>
-</div>
 
 <nav class="navbar">
   <ul class="navbar__menu">

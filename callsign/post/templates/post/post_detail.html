@@ -127,7 +127,7 @@
   <!-- 방장님 오픈채팅 url : {{ post.url|urlize }} -->
   {% comment %} {{post.url}} {% endcomment %}
   <!-- <p>{{post.body}}</p> -->
-  
+  {% for post in posts %}
   {% if user == post.writer %}
   <a href = "{%url 'post:post_edit' post.id%}">수정하기</a>
   <a href = "{%url 'post:post_delete' post.id%}">방 없애기</a>
@@ -141,6 +141,8 @@
       {% else %}
       <button class="outside-finish">모집이 마감되었습니다</button>
       {% endif %}
+
+
       <dialog>
         <div class="dialog__inner">
           <button class="button button-close close">╳</button>
@@ -286,17 +288,14 @@ $(".like").click(function(){
                         $('#count-{{post.id}}').html('참여하기 '+response.like_count+"명");
                     }
                 },
-                error:function(request, status, error){
-                    alert("로그인이 필요합니다.")
-                    alert('code:'+request.status+'\n'+'message:'+request.responseText+"\n"+"error:"+error);
-                },
+               
             })
         })
 </script>
 
 {% endif %}
 {% endif %}
-
+{% endfor %}
 {% endblock %}
 
 

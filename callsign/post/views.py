@@ -2,7 +2,7 @@ from time import time
 from post.models import *
 from django.utils import timezone
 from django.shortcuts import render, redirect, get_object_or_404
-
+from django.core.paginator import Paginator
 #북마크
 from django.views.decorators.http import require_POST
 from django.http import HttpResponse
@@ -25,18 +25,36 @@ def postlist(request):
 
 def post_detail(request, id):
     post = get_object_or_404(Post, pk = id)
-    
+    random = Like.objects.filter(post=post)
+    context = {
+           'posts':Post.objects.filter(id=id),
+           'random' : random,
+        }
+    if post.count == post.like_count :
+        post.completed = True
+        return render(request, 'post/result.html',   context)
+
     if (post.completed is True) :
-        # (post.like_count == post.count) :
-        return render(request, 'post/result.html', {'post':post})
+        return render(request, 'post/result.html', context)
     else :
-        return render(request, 'post/post_detail.html', {'post':post})
+        return render(request, 'post/post_detail.html', context)
+
+# def split_list(a_list):
+#     half = len(a_list)//2
+#     return a_list[:half], a_list[half:]
+
+# A = ['a','b','c','d','e','f']
+# B, C = split_list(A)
+# print(B)
+# print(C)
+
+
 # 권한부여 
 
 def post_completed(request, id):
     completed_post = Post.objects.get(id = id)
-    completed_sex = Sex.objects.all()
     completed_exercise = Exercise.objects.all()
+    completed_sex = Sex.objects.all() 
     completed_post.completed=True
     completed_post.save()
     return redirect('post:completed_detail', completed_post.id)
@@ -399,6 +417,7 @@ def completed_etc_list(request):
     return render(request, 'post/etc_list.html', {'etc_list': etc_list})
 
 
+
     
 # 신청하기
 @require_POST
@@ -407,6 +426,7 @@ def like_toggle(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     post_like, post_like_created = Like.objects.get_or_create(user=request.user, post=post)
 
+    
     if not post_like_created:
         post_like.delete()
         result = "like_cancel"
@@ -415,40 +435,11 @@ def like_toggle(request, post_id):
 
     context = {
         "like_count" : post.like_count,
-        "result" : result
+        "result" : result,
     }
 
     return HttpResponse(json.dumps(context), content_type="apllication/json")
 
-# 랜덤매칭 suffle, len
-# 게시물에 좋아요 누른 사람을 다 불러온다.(post.like_user_set_all)
-# 유저 리스트 순서를 섞고(random.suffle) 그 다음 반(len,:half)으로 뽀갠다. 
-
-#     # 반으로만 뽀개기
-# def split_list(request, like_list, user_id, id):
-#         # 좋아요 누른 사람을 불러온다
-#     post = Post.objects.get(id=id)
-#     like_count = Like.objects.get(id=user_id)
-        
-#     half = len(like_list)
-#     return a_list[:half], b_list[half:]
-
-#     LIKE_LIST = [like_count]
-#     A, B = split_list(LIKE_LIST)
-
-#     context = {
-#     'B' : split_list.B,
-#     'A' : split_list.A
-#     }
-
-#     return render(request, 'post/result.html',context)
-
-
-# 모르겠다/////......
-
-
-
-#북마크 마이페이지에 보이게
 def my_like(request, user_id):
     user = User.objects.get(id=user_id)
     like_list = Like.objects.filter(user=user)
