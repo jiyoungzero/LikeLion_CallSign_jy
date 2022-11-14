@@ -2,23 +2,25 @@
 
 {% block content %}
 
-<h1>축구 게시글만 보이는 곳</h1>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style_list.css' %}">
 
-{% for s in soccer_list %}
-{%if s.flag_enddate == False %}
-<br>
-모집 마감일 - {{s.end_date}}
-{%endif%}
-    <div>
-    <h3>{{s.title}}</h3><br>
-    {{s.summary}}<br>
-    모집 시간대 : {{s.start_time}} ~ {{s.end_time}}<br>
-    성별 : {{s.sex}}<br>
-    <a href = "{%url 'post:post_detail' s.id%}">참여하기</a>
-    </div>
-{% endfor %} 
+<div id="list_body">
+    {% for s in soccer_list %}
+    {%if s.flag_enddate == False %}
+    <p id="endDate">{{s.end_date}}</p>
+    {%endif%}
+        <div id="list">
+            <p id="list_title">{{s.title}}</p>
+            <!-- {{s.summary}}<br> -->
+            모집 시간대 : {{s.start_time}} ~ {{s.end_time}}<br>
+            <!-- 성별 : {{s.sex}}<br> -->
+            <a href = "{%url 'post:post_detail' s.id%}">참여하기</a><br/><br/>
+        </div>
+    {% endfor %} 
 
 
-<a href="{% url 'post:completed_soccer_list' %}"> 완료된 게시글 보기</a>
-<a href="{% url 'post:soccer_list' %}"> 모집중인 게시글 보기</a>
+    <a href="{% url 'post:completed_soccer_list' %}"> 완료된 게시글 보기</a>
+    <a href="{% url 'post:soccer_list' %}"> 모집중인 게시글 보기</a>
+</div>
 {% endblock %}
