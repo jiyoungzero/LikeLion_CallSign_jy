@@ -1,36 +1,28 @@
 {% extends 'base.html' %}
 
+{% block content %}
+
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/style_list.css' %}">
 
-{% block content %}
+<div id="list_body">
+    {% for post in posts %}
+    {%if post.flag_enddate == False %}
+    <p id="endDate">{{post.end_date}}</p>
+    {%endif%}
+    <div id="list">
+        <p id="list_title">{{post.title}}</p>
+        <div id="list_content">
+            <p id="time">{{post.start_time}} ~ {{post.end_time}}</p>
+            <!-- 성별 : {{s.sex}}<br> -->
+            <a href = "{%url 'post:post_detail' post.id%}"><button id="joinButton">자세히보기</button></a><br/><br/>
+        </div>
+    </div>
+    {% endfor %}
 
-<hr>
-
-<div>
-  {% for post in posts %}
-  {%if post.flag_enddate == False %}
-  모집 마감일 - {{post.end_date}}
-  {%endif%}
-  <div>
-    
-    <h3>{{post.title}}</h3><br>
-    {{post.summary}}<br>
-    모집 시간대 : {{post.start_time}} ~ {{post.end_time}}<br>
-    성별 : {{post.sex}}<br>
-    <a href = "{%url 'post:post_detail' post.id%}">참여하기</a>
-  </div><br><br>
-  {% endfor %}
-  
+    <a href="{% url 'post:completed_postlist' %}"> 완료된 게시글 보기</a>
+    <a href="{% url 'post:postlist' %}"> 모집중인 게시글 보기</a>
 </div>
-</form>
-
-
-  <a href="{% url 'post:completed_postlist' %}"> 완료된 게시글 보기</a>
-
-
-  <a href="{% url 'post:postlist' %}"> 모집중인 게시글 보기</a>
-
 
 
 {% endblock %}

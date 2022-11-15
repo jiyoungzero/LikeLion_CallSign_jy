@@ -13,9 +13,11 @@
         <div id="list">
             <p id="list_title">{{t.title}}</p>
             <!-- {{v.summary}}<br> -->
-            <p id="time">{{t.start_time}} ~ {{t.end_time}}</p>
-            <!-- 성별 : {{v.sex}}<br> -->
-            <a href = "{%url 'post:post_detail' t.id%}">참여하기</a>
+            <div id="list_content">
+                <p id="time">{{t.start_time}} ~ {{t.end_time}}</p>
+                <!-- 성별 : {{s.sex}}<br> -->
+                <a href = "{%url 'post:post_detail' t.id%}"><button id="joinButton">자세히보기</button></a><br/><br/>
+            </div>
         </div>
     {% endfor %} 
 
