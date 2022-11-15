@@ -1,69 +1,80 @@
 <style>
     
-    @font-face {
-    font-family: Montserrat_EBI;
-    src: url(../font/Montserrat-ExtraBoldItalic.ttf);
-  }
-
   @font-face {
-      font-family: NotoSansKR-Bold;
-      src: url(../font/NotoSansKR-Bold.otf);
-  }
+  font-family: Montserrat_EBI;
+  src: url(../font/Montserrat-ExtraBoldItalic.ttf);
+}
 
-  @font-face {
-      font-family: NotoSansKR-Regular;
-      src: url(../font/NotoSansKR-Regular.otf);
-  }
-
-  .outside-finish{
-    border: none;
-    background-color: #DADADA;
-    border-radius: 10px;
-    border-color : #DADADA;
-    font-size: 16px;
-    color: white;
-    outline: none;
-    pointer-events: none;
-    padding: 10px;
-    width: 90%;
-    margin: 20px 0px;
-  }
-
-  #rand_teamA{
+@font-face {
     font-family: NotoSansKR-Bold;
-    margin-bottom: 0px;
-  }
+    src: url(../font/NotoSansKR-Bold.otf);
+}
 
-  #rand_teamB{
-    font-family: NotoSansKR-Bold;    
-    margin-bottom: 0px;
-  }
-  
-  #randA_content{
+@font-face {
     font-family: NotoSansKR-Regular;
-    font-size: 14px;
-    display: inline-block;
-  }
-  
-  #randB_content{
-    font-family: NotoSansKR-Regular;
-    font-size: 14px;
-    display: inline-block;
-  }
+    src: url(../font/NotoSansKR-Regular.otf);
+}
 
-  #teamA{
-    border: solid 1.3px #DADADA;
-    border-radius: 10px;
-    margin: 20px 20px;
-  }
+.outside-finish{
+  border: none;
+  background-color: #DADADA;
+  border-radius: 10px;
+  border-color : #DADADA;
+  font-size: 16px;
+  color: white;
+  outline: none;
+  pointer-events: none;
+  padding: 10px;
+  width: 90%;
+  margin: 20px 0px;
+}
 
-  #teamB{
-    border: solid 1.3px #DADADA;
-    border-radius: 10px;
-    margin: 20px 20px;
-  }
+#rand_teamA{
+  font-family: NotoSansKR-Bold;
+  margin-bottom: 0px;
+}
 
-  </style>
+#rand_teamB{
+  font-family: NotoSansKR-Bold;    
+  margin-bottom: 0px;
+}
+
+#randA_content{
+  font-family: NotoSansKR-Regular;
+  font-size: 14px;
+  display: inline-block;
+}
+
+#randB_content{
+  font-family: NotoSansKR-Regular;
+  font-size: 14px;
+  display: inline-block;
+}
+
+#teamA{
+  border: solid 1.3px #DADADA;
+  border-radius: 10px;
+  margin: 20px 20px;
+}
+
+#teamB{
+  border: solid 1.3px #DADADA;
+  border-radius: 10px;
+  margin: 20px 20px;
+}
+
+#urlbutton{
+  font-family: NotoSansKR-Regular;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #4B70F3;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  width: 90%;
+}
+
+</style>
 
 <!-- <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -96,28 +107,31 @@ B조 {{ post.dislike_count }}명
 <p>{{post.body}}</p>
 {% endfor %} -->
 
+{% for post in posts %}
+  <button id="urlbutton">카카오톡 오픈채팅방 들어가기</button>
+{% endfor %}
 
 <div id="teamA">
-  <p id="rand_teamA">TeamA</p> 
-  {% for like in random %}
-    <div id="randA_content" style="margin:13px 3px;padding:7px 7px;background-color:#E7ECFF;width:64px;text-align: center;border-radius: 10px;">
-     {{like.user}}
-    </div>
-  {% endfor %}
+<p id="rand_teamA">TeamA</p> 
+{% for like in random %}
+  <div id="randA_content" style="margin:13px 3px;padding:7px 7px;background-color:#E7ECFF;width:64px;text-align: center;border-radius: 10px;">
+   {{like.user}}
+  </div>
+{% endfor %}
 </div>
 
 <div id="teamB">
-  <p id="rand_teamB">TeamB</p>
-  {% for dislike in random %}
-  
-  <div id="randB_content" style="margin:13px 3px;padding:7px 7px;background-color:#E7ECFF;width:64px;text-align: center;border-radius: 10px;">
-   {{dislike.user}}
-    </div>
-  {% endfor %}
+<p id="rand_teamB">TeamB</p>
+{% for dislike in random %}
+
+<div id="randB_content" style="margin:13px 3px;padding:7px 7px;background-color:#E7ECFF;width:64px;text-align: center;border-radius: 10px;">
+ {{dislike.user}}
+  </div>
+{% endfor %}
 </div> 
 
 <button class="outside-finish">모집이 마감되었습니다</button>
 
-  {% endblock %}
+{% endblock %}
 
 
