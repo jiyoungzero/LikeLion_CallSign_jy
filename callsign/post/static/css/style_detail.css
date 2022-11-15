@@ -48,15 +48,15 @@ span{
     color: #ffffff;
     font-family: NotoSansKR-Regular;
     border-radius: 15px;
-    width:fit-content;
+    width:10em;
     padding: 4px 15px;
     font-size: 0.7em;
     float: right;
     display: flex;
     left: 12.5em;
-    top: 2.2em;
-    position: relative;
-    margin-left: 20px;
+    top: 1.8em;
+    position: absolute;
+    margin-left: 60px;
 }
 
 #detail_title{
@@ -65,6 +65,7 @@ span{
     font-size: 1.3em;
     float: left;
     position: relative;
+    width: 200px;
 }
 
 #detail_body{
