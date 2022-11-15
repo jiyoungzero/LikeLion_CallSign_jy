@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 <div class="new_body">
-<button id="back" onclick = "location.href = '{{ request.META.HTTP_REFERER }}' "><img style="width: 50px;" src="../../static/images/back.png"/></button>
+  <a id="back" href="{% url 'post:postlist' %}"><img style="width: 50px;" src="../../static/images/back.png"/></a>
 
 <!-- <a href="../../../callsign/templates/base.html" -->
 <h3 id="newTitle">새 팀원 모집하기</h3> 
@@ -58,7 +58,6 @@
       A팀 <input type="number" id="input_count" name="count" placeholder="숫자만 입력해주세요"/> </p>
       <p id="TeamB">
       B팀 <input type="number"  id="input_count" name="countB" placeholder="숫자만 입력해주세요"/> </p>
-      <hr/>
         
       
     <!-- <p id="count">총 모집 인원</p><input type="number" id="input_count" name="count" placeholder="숫자만 입력해주세요"/> -->
