@@ -11,15 +11,6 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
-def mypage(request):
-    user = request.user
-    member = Member.objects.get(user=user)
-    context = {
-        'member':member,
-        'like_list' : Like.objects.filter(user=user),
-        'posts':Post.objects.filter(writer=user),
-        }
-    return render(request, 'accounts/mypage.html', context)
 
 
 def mypostlist(request):

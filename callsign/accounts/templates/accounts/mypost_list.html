@@ -1,7 +1,7 @@
 {% block content %}
 
 <a href="{% url 'post:postlist' %}">뒤로가기</a>
-<li><a href="{% url 'accounts:mypage' %}">내 모집글({{posts.count}})</a></li>
+<li><a href="{% url 'accounts:mypost_list' %}">내 모집글({{posts.count}})</a></li>
 <li><a href="{% url 'accounts:mylikepost_list' %}">내 지원글({{like_list.count}})</a></li>
 
 
