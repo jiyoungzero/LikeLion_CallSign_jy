@@ -26,14 +26,13 @@ def postlist(request):
 def post_detail(request, id):
     post = get_object_or_404(Post, pk = id)
     random = Like.objects.filter(post=post)
+    randomB = Dislike.objects.filter(post=post)
     context = {
            'posts':Post.objects.filter(id=id),
            'random' : random,
+           'randomB' : randomB,
         }
-    if post.count == post.like_count :
-        post.completed = True
-        return render(request, 'post/result.html',   context)
-
+   
     if (post.completed is True) :
         return render(request, 'post/result.html', context)
     else :
@@ -74,7 +73,18 @@ def completed_postlist(request):
 
 def completed_detail(request, id) :
     post = get_object_or_404(Post, pk = id)
-
+    random = Like.objects.filter(post=post)
+    randomB = Dislike.objects.filter(post=post)
+    context = {
+           'posts':Post.objects.filter(id=id),
+           'random' : random,
+           'randomB' : randomB,
+        }
+   
+    if (post.completed is True) :
+        return render(request, 'post/result.html', context)
+    else :
+        return render(request, 'post/post_detail.html', context)
     return render(request, 'post/result.html', {'post':post})
 
 
@@ -91,6 +101,7 @@ def post_create(request):
     new_post.url = request.POST['url']
     new_post.exercise = get_object_or_404(Exercise, id=request.POST['exercise'])
     new_post.count = request.POST['count']
+    new_post.countB = request.POST['countB']
     new_post.sex = get_object_or_404(Sex, id=request.POST['sex'])
     new_post.writer = request.user
     new_post.pub_date = timezone.now()
@@ -447,3 +458,21 @@ def my_like(request, user_id):
         'like_list' : like_list,
     }
     return render(request, 'accounts/mypage.html', context)
+
+
+@require_POST
+@login_required
+def dislike_toggle(request, post_id):
+    post = get_object_or_404(Post, pk = post_id)
+    post_dislike, post_dislike_created = Dislike.objects.get_or_create(user=request.user, post=post)
+
+    if not post_dislike_created:
+        post_dislike.delete()
+        result = "dislike_cancel"
+    else:
+        result = "dislike"
+    context = {
+        "dislike_count" : post.dislike_count,
+        "result" : result
+    }
+    return HttpResponse(json.dumps(context), content_type = "application/json")

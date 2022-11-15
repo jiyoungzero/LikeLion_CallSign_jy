@@ -12,7 +12,8 @@
         {{post.title}}<br>
         {{post.start_time}} ~ {{post.end_time}} <br>
         <a href = "{%url 'post:post_detail' post.id%}">자세히보기</a><br>
-        {{ post.like_count }} /  {{post.count}} 명<br>
+        A팀 : {{ post.like_count }} / {{post.count}} 명<br>
+        B팀 : {{ post.dislike_count }} / {{post.countB}} 명<br>
         <br>
     {% endfor %}
 </div> 

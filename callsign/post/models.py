@@ -66,9 +66,11 @@ class Post(models.Model):
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE, blank=True, null=True)
     sex = models.ForeignKey(Sex, on_delete=models.CASCADE, blank=True, null=True) 
     count = models.IntegerField(max_length = 30, null="True")
+    countB = models.IntegerField(max_length = 30, null="True")
     flag_enddate = models.BooleanField(default=False)
     # 좋아요
     like_user_set = models.ManyToManyField(User, blank=True, related_name='likes_user_set',through='Like',null=True)
+    dislike_user_set = models.ManyToManyField(User, blank=True, related_name='dislikes_user_set',through='Dislike')
     # 같이 운동할 날짜
     start_date = models.DateField(auto_now=True,editable=True)
     end_date = models.DateField(auto_now=False,editable=True)
@@ -92,6 +94,10 @@ class Post(models.Model):
     def like_count(self):
         return self.like_user_set.count()
 
+    @property
+    def dislike_count(self):
+        return self.dislike_user_set.count()
+    
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
@@ -103,3 +109,11 @@ class Like(models.Model):
 
 
 
+class Dislike(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE,null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+         unique_together = (('user', 'post'))
