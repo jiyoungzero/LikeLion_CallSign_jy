@@ -20,8 +20,8 @@
     </div>
     {% endfor %}
 
-    <a href="{% url 'post:completed_postlist' %}"> 완료된 게시글 보기</a>
-    <a href="{% url 'post:postlist' %}"> 모집중인 게시글 보기</a>
+    <a id="completed_post" href="{% url 'post:completed_postlist' %}"> 완료된 게시글 보기</a>
+    <a id="ing_post" href="{% url 'post:postlist' %}"> 모집중인 게시글 보기</a>
 </div>
 
 

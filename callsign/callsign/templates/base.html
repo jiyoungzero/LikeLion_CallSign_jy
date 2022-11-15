@@ -12,7 +12,8 @@
 </head>
 <body>
   <div class="mainHead">
-    <h4 id="logo">CallSign</h4>
+    <!-- <h4 id="logo">CallSign</h4> -->
+    <br/><a id="logo" href="{% url 'post:postlist' %}">CallSign</a><br>
     <!-- 로그인 안했을 때 : 로그인 -->
      <button id="mypage" onclick="location.href='{% url 'account_login' %}?next={{ request.path }}';">
       <img style="width: 25px;" src="../../static/images/user.png"/></button>

@@ -33,6 +33,7 @@ body{
 
 #logo {
     margin:0px;
+    top: 30px;
     font-family: Montserrat_EBI;
     font-size: 28px;
     color: white;

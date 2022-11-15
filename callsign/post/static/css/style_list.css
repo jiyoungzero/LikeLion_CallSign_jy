@@ -89,3 +89,13 @@ body{
     font-family: NotoSansKR-Bold;
     font-size: 40px;
 }
+
+#completed_post{
+    font-size: 16px;
+    margin-right: 35px;
+}
+
+#ing_post{
+    font-size: 16px;
+    margin-right: 35px;
+}
