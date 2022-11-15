@@ -1,14 +1,23 @@
 {% comment %} 피그마 보면 운동목록없이 모집 현황, 신청목록란으로 나눠있어서 지웠어요! {% extends 'base.html' %} {% endcomment %} 
 
 {% block content %}
-<a id="back" href="{% url 'post:postlist' %}"><img style="width: 2em;" src="../../static/images/back_white.png"/></a>
-<li><a href="{% url 'accounts:mypost_list' %}">내 모집글({{posts.count}})</a></li>
-<li><a href="{% url 'accounts:mylikepost_list' %}">내 지원글({{like_list.count}})</a></li>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/mypage_detail.css' %}">
+
+<div class="new_body">
+	<a id="back" href="{% url 'post:postlist' %}"><img style="width: 50px;" src="../../static/images/back.png"/></a>
+
+	<div id="tab">
+		<a id="tab_invite" href="{% url 'accounts:mypost_list' %}">내 모집글({{posts.count}})</a>&nbsp;&nbsp;&nbsp;
+		<a id="tab_join" href="{% url 'accounts:mylikepost_list' %}">내 신청글({{like_list.count}})</a>
+	</div>
+	<h2 id="mypage_title">내 신청글</h2>
+</div>
 
 
-
-<div class="container">
-    <h2>내 지원글</h2>
+<!-- <div class="container">
+    <h2 id="mypage_title">내 신청글</h2>
     {% for like in like_list %}
             {{ like.post.title }}<br>
             {{like.post.start_time}} ~ {{like.post.end_time}} <br>
@@ -25,7 +34,23 @@
             B팀 : {{ dislike.post.like_count }} /  {{dislike.post.countB}} 명<br>
             <br>
     {% endfor %}
-</div> 
+</div>  -->
+
+<div id="list_body">
+    {% for like in like_list %}
+    {%if like.post.flag_enddate == False %}
+    <p id="endDate">{{like.post.end_date}}</p>
+    {%endif%}
+    <div id="list">
+        <p id="list_title">{{like.post.title}}</p>
+        <div id="list_content">
+            <p id="time">{{like.post.start_time}} ~ {{like.post.end_time}}</p><br><br>
+            <!-- 성별 : {{s.sex}}<br> -->
+            <a href = "{%url 'post:post_detail' like.post.id%}"><button id="joinButton">자세히보기</button></a><br/><br/>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
 
 {% endblock %}

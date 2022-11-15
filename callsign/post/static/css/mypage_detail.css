@@ -21,14 +21,13 @@ body{
     margin: 60px;
 }
 
+
 #list_body{
-    margin-left: 45px;
+    margin-left: 68px;
 }
 
 #list{
-    padding-left: 20px;
-    border-left: solid 2px #4B70F3;
-    /* border-left: solid 2.5px #4B70F3; */
+    border-left: solid 2.5px #4B70F3;
     border: solid 1.5px #f5f5f5;
     border-right: none;
     border-radius: 15px 0px 0px 15px;
@@ -39,7 +38,7 @@ body{
 
 
 #list_title{
-    font-size: 14px;
+    font-size: 28px;
     font-family: NotoSansKR-Bold;
     margin-bottom: 0;
 }
@@ -51,7 +50,7 @@ body{
 }
 
 #time{
-    font-size: 12px;
+    font-size: 26x;
     font-family: NotoSansKR-Regular;
     display: flex;
     float: left;
@@ -59,7 +58,7 @@ body{
 
 #endDate{
     font-family: NotoSansKR-Bold;
-    font-size: 14px;
+    font-size: 28px;
     color: #4B70F3;
 }
 
@@ -69,20 +68,54 @@ body{
     color : white;
     font-family: NotoSansKR-Bold;
     border: none;
-    font-size: 10px;
+    font-size: 24px;
     border-radius: 15px;
     padding: 4px 15px;
     cursor: pointer;
     display: flex;
     position: relative;
-    margin-top: 9px;
-    margin-right: 10px;
+    margin-top: -30px;
+    margin-right: 30px;
 }
 
 #tab{
     margin: 60px 0px;
     font-size: 30px;
     font-family: NotoSansKR-Regular;
+    color: #969696;
+    text-decoration: none;
+}
+
+#tab_invite{
+    margin: 60px 0px;
+    font-size: 30px;
+    font-family: NotoSansKR-Regular;
+    color: #969696;
+    text-decoration: none;
+}
+
+#tab_invite:focus{
+    margin: 60px 0px;
+    font-size: 30px;
+    font-family: NotoSansKR-Regular;
+    color: #000000;
+    text-decoration: none;
+}
+
+#tab_join{
+    margin: 60px 0px;
+    font-size: 30px;
+    font-family: NotoSansKR-Regular;
+    color: #969696;
+    text-decoration: none;
+}
+
+#tab_join:focus{
+    margin: 60px 0px;
+    font-size: 30px;
+    font-family: NotoSansKR-Regular;
+    color: #000000;
+    text-decoration: none;
 }
 
 #mypage_title{

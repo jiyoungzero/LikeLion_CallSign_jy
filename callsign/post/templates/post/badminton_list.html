@@ -8,15 +8,16 @@
 <div id="list_body">
     {% for b in badminton_list %}
     {%if b.flag_enddate == False %}
-    <br>
     <p id="endDate">{{b.end_date}}</p>
     {%endif%}
         <div id="list">
             <p id="list_title">{{b.title}}</p>
             <!-- {{b.summary}}<br> -->
-            <p id="time">{{b.start_time}} ~ {{b.end_time}}</p>
-            <!-- 성별 : {{v.sex}}<br> -->
-            <a href = "{%url 'post:post_detail' b.id%}">참여하기</a>
+            <div id="list_content">
+                <p id="time">{{s.start_time}} ~ {{s.end_time}}</p>
+                <!-- 성별 : {{b.sex}}<br> -->
+                <a href = "{%url 'post:post_detail' b.id%}"><button id="joinButton">자세히보기</button></a><br/><br/>
+            </div>
         </div>
     {% endfor %}
 
