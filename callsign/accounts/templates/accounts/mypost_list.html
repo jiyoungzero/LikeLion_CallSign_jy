@@ -1,13 +1,13 @@
 {% block content %}
 
-<a href="{% url 'post:postlist' %}">뒤로가기</a>
+<a id="back" href="{% url 'post:postlist' %}"><img style="width: 2em;" src="../../static/images/back_white.png"/></a>
 <li><a href="{% url 'accounts:mypost_list' %}">내 모집글({{posts.count}})</a></li>
 <li><a href="{% url 'accounts:mylikepost_list' %}">내 지원글({{like_list.count}})</a></li>
 
 
 
 <div class="container">
-    <h2>내 모집글 ({{posts.count}})</h2>
+    <h2>내 모집글</h2>
     {% for post in posts %}
         {{post.title}}<br>
         {{post.start_time}} ~ {{post.end_time}} <br>
