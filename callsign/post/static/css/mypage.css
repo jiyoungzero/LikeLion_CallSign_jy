@@ -1,0 +1,55 @@
+@font-face {
+    font-family: Montserrat_EBI;
+    src: url(../font/Montserrat-ExtraBoldItalic.ttf);
+}
+
+@font-face {
+    font-family: NotoSansKR-Bold;
+    src: url(../font/NotoSansKR-Bold.otf);
+}
+
+@font-face {
+    font-family: NotoSansKR-Regular;
+    src: url(../font/NotoSansKR-Regular.otf);
+}
+
+body{
+    margin: 0px;
+    text-align: center;
+}
+
+.content{
+    margin: 25px;
+    width: 82%;
+}
+
+#lable{
+    font-family: NotoSansKR-Bold;
+    font-size: 15px;
+    margin-bottom: 7px;
+    width:fit-content;
+    display: flex;
+}
+
+input{
+    width:100%;
+    font-family: NotoSansKR-Regular;
+    border: 1px solid #C8C8C8;
+    border-radius: 10px;
+    padding: 7px 9px;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+#checkbutton{
+    font-family: NotoSansKR-Bold;
+    background-color: #4B70F3;
+    border-radius: 18px;
+    border: none;
+    color: white;
+    width: 90%;
+    font-size: 0.8em;
+    height: 50px;
+    cursor: pointer;
+    margin-top: 25px;
+}
