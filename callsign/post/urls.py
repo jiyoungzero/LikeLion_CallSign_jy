@@ -4,7 +4,7 @@ from . import views
 
 app_name = 'post'
 urlpatterns = [
-    path('postlist/', postlist, name = "postlist"),
+    path('', postlist, name = "postlist"),
     path('<int:id>/', post_detail, name="post_detail"),
     path('post_new/', post_new, name = "post_new"),
     path('post_create/', post_create, name="post_create"),
@@ -35,7 +35,7 @@ urlpatterns = [
     path('<int:id>/post_completed/',post_completed, name="post_completed"),
     path('like_toggle/<int:post_id>', like_toggle, name="like_toggle"),
     path('my_like/<int:user_id>', my_like, name="my_like"),
-  
+    path('dislike_toggle/<int:post_id>/',dislike_toggle,name="dislike_toggle"),
     # 랜덤매칭
     # path('split_list', split_list, name="split_list"),
 

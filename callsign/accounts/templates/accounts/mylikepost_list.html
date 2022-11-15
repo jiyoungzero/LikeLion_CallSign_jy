@@ -3,17 +3,26 @@
 {% block content %}
 <a href="{% url 'post:postlist' %}">뒤로가기</a>
 <li><a href="{% url 'accounts:mypost_list' %}">내 모집글({{posts.count}})</a></li>
-<li><a href="{% url 'accounts:mylikepost_list' %}">내 지원글({{like_list.count}})</a></li>
+<li><a href="{% url 'accounts:mylikepost_list' %}">내 지원글</a></li>
 
 
 
 <div class="container">
-    <h2>내 지원글 ({{like_list.count}})</h2>
+    <h2>내 지원글</h2>
     {% for like in like_list %}
             {{ like.post.title }}<br>
             {{like.post.start_time}} ~ {{like.post.end_time}} <br>
             <a href = "{%url 'post:post_detail' like.post.id%}">자세히보기</a><br>
-            {{ like.post.like_count }} /  {{like.post.count}} 명<br>
+            A팀 : {{ like.post.like_count }} /  {{like.post.count}} 명<br>
+            B팀 : {{ dislike.post.like_count }} /  {{dislike.post.countB}} 명<br>
+            <br>
+    {% endfor %}
+    {% for dislike in like_list %}
+            {{ dislike.post.title }}<br>
+            {{dislike.post.start_time}} ~ {{dislike.post.end_time}} <br>
+            <a href = "{%url 'post:post_detail' dislike.post.id%}">자세히보기</a><br>
+            A팀 : {{ like.post.like_count }} /  {{like.post.count}} 명<br>
+            B팀 : {{ dislike.post.like_count }} /  {{dislike.post.countB}} 명<br>
             <br>
     {% endfor %}
 </div> 

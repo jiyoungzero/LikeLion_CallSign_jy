@@ -34,20 +34,28 @@
   글쓴사람 : {{post.writer}}<br>
   방장님 오픈채팅 url : {{ post.url|urlize }} <br>
   모집인원  {{post.count}} 명<br>
-  신청인원  {{ post.like_count }} 명
- 
+  A조  {{ post.like_count }} 명
+  B조 {{ post.dislike_count }}명 
   <hr>
   {% comment %} {{post.url}} {% endcomment %}
   <p>{{post.body}}</p>
   {% endfor %}
   <p>
+    A팀 
     {% for like in random %}
     
+    
     <div style="margin:10px;padding:10px;background-color:#E7ECFF;width:64px;text-align: center;border-radius: 10px;">
-              {{like.user}}
+       {{like.user}}
       </div>
     {% endfor %}
-
+    <p>B팀</p>
+    {% for dislike in random %}
+    
+    <div style="margin:>10px;padding:10px;background-color:#E7ECFF;width:64px;text-align: center;border-radius: 10px;">
+     {{dislike.user}}
+      </div>
+    {% endfor %}
   </p>
 
   <button class="outside-finish">모집이 마감되었습니다</button>

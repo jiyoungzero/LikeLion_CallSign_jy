@@ -17,9 +17,14 @@
           <p id="detail_title">{{post.title}}</p>
           <span id="count-{{post.ids}}" class="alt-services-title font-alt">
             {% if post.like_count == 0 %}
-                0 / {{post.count}} 
+            A팀 : 0 / {{post.count}} <br>
             {% else %}
-                {{ post.like_count }} /  {{post.count}} 
+            A팀 :    {{ post.like_count }} /  {{post.count}} <br>
+            {% endif %}
+            {% if post.dislike_count == 0 %}
+            B팀 : 0 / {{post.countB}} 
+            {% else %}
+            B팀 :    {{ post.dislike_count }} /  {{post.countB}} 
             {% endif %}
           </span>
       </div>

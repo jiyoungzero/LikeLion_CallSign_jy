@@ -19,6 +19,7 @@ def mypostlist(request):
     context = {
         'member':member,
         'like_list' : Like.objects.filter(user=user),
+        'dislike_list' : Dislike.objects.filter(user=user),
         'posts':Post.objects.filter(writer=user),
         }
     return render(request, 'accounts/mypost_list.html', context)
@@ -30,6 +31,7 @@ def mylikelist(request):
     context = {
         'member':member,
         'like_list' : Like.objects.filter(user=user),
+        'dislike_list' : Dislike.objects.filter(user=user),
         'posts':Post.objects.filter(writer=user),
         }
     return render(request, 'accounts/mylikepost_list.html', context)
