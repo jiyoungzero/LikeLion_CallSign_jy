@@ -1,8 +1,15 @@
 {% block content %}
 
-<a id="back" href="{% url 'post:postlist' %}"><img style="width: 2em;" src="../../static/images/back_white.png"/></a>
-<li><a href="{% url 'accounts:mypost_list' %}">내 모집글({{posts.count}})</a></li>
-<li><a href="{% url 'accounts:mylikepost_list' %}">내 지원글({{like_list.count}})</a></li>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="new_body">
+  <a id="back" href="{% url 'post:postlist' %}"><img style="width: 50px;" src="../../static/images/back.png"/></a>
+
+<div id="tab">
+    <a href="{% url 'accounts:mypost_list' %}">내 모집글({{posts.count}})</a>&nbsp;&nbsp;&nbsp;
+    <a href="{% url 'accounts:mylikepost_list' %}">내 지원글({{like_list.count}})</a>
+</div>
 
 
 
