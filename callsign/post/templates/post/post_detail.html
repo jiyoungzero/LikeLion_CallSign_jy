@@ -1,5 +1,20 @@
 <style>
 
+  @font-face {
+    font-family: Montserrat_EBI;
+    src: url(../font/Montserrat-ExtraBoldItalic.ttf);
+  }
+
+  @font-face {
+      font-family: NotoSansKR-Bold;
+      src: url(../font/NotoSansKR-Bold.otf);
+  }
+
+  @font-face {
+      font-family: NotoSansKR-Regular;
+      src: url(../font/NotoSansKR-Regular.otf);
+  }
+
   .outside{
     padding: 10px;
     border: none;
@@ -31,10 +46,12 @@
     border: none;
     background-color: #4B70F3;
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 13px;
     color: #fff;
     outline: none;
     cursor: pointer;
+    width: 100%;
+    font-family: NotoSansKR-Bold;
   }
   
   h3 {
@@ -44,9 +61,14 @@
   }
   
   .sum{
-    font-size: 14px;
+    font-size: 13px;
     justify-content: center;
     color: black;
+    background-color: #E7ECFF;
+    padding: 30px 40px;
+    border-radius: 11px;
+    text-align: left;
+    font-family: NotoSansKR-Regular;
   }
   
   h2 {
@@ -66,7 +88,7 @@
   
   dialog {
     border: none;
-    border-radius: 6px;
+    border-radius: 11px;
     animation: appear .8s cubic-bezier(.77,0,.175,1) forwards;
   }
   
@@ -75,7 +97,12 @@
   }
   .dialog__inner {
     color: white;
+    width: 15em;
   }
+
+  /* .dialog__content{
+    margin: 0px;
+  } */
   
   .like{
     display: flex;
@@ -116,10 +143,6 @@
   
   {% block content %}
   
-  
-  {% if post.completed is True %}
-  <h1>모집 마감됨</h1>
-  {% endif %}
   
   <!-- 등록날짜 : {{post.pub_date}}<br> -->
   <!-- {{post.end_date}} {{post.start_time}} ~ {{post.end_time}}<br> -->
@@ -214,7 +237,7 @@
   <div class="dialog__inner">
     <button class="button button-close close">╳</button>
     <div class="dialog__content">
-      <h3>신청완료</h3>
+      <h3 style="margin: 5px; font-family: NotoSansKR-Bold;">신청완료</h3>
       <p class="sum">
       종목  {{post.exercise}}<br>
       날짜  {{post.end_date}}<br>
@@ -285,7 +308,6 @@ $(".like").click(function(){
                         $('#count-{{post.id}}').html('참여하기 '+response.like_count+"명");
                     }
                 },
-               
             })
         })
 $(".dislike").click(function(){

@@ -47,4 +47,4 @@ def information(request):
     new_info.gender = request.POST['gender']
     new_info.sports = request.POST['sports']
     new_info.save()
-    return redirect('accounts:mypage')
+    return redirect('accounts:mypost_list')
