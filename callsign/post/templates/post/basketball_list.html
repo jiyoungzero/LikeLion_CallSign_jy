@@ -22,7 +22,7 @@
         </div>
     {% endfor %} 
 
-    <a href="{% url 'post:completed_basketball_list' %}"> 완료된 게시글 보기</a>
-    <a href="{% url 'post:basketball_list' %}"> 모집중인 게시글 보기</a>
+    <a id="completed_post" href="{% url 'post:completed_basketball_list' %}"> 완료된 게시글 보기</a>
+    <a id="ing_post" href="{% url 'post:basketball_list' %}"> 모집중인 게시글 보기</a>
 </div>
 {% endblock %}
