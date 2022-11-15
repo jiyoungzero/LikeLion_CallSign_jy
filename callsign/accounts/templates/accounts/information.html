@@ -2,25 +2,28 @@
 
 {% block content %}
 
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/mypage.css' %}">
+
 <form class="new_form" action="{% url 'accounts:information' %}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
-<div>
-    <div>이름</div>
-    <div><input required type="text" name="name" id="name"></div>
+<div class="content">
+    <p id="lable">이름</p>
+    <div id="label_input"><input required type="text" name="name" id="name"></div>
+</div>
+
+<div class="content">
+    <p id="lable">성별</p>
+    <div id="label_input"><input required type="text" name="gender" id="gender"></div>
+</div>
+
+<div class="content">
+    <p id="lable">좋아하는 운동</p>
+    <div id="label_input"><input required type="text" name="sports" id="sports"></div>
 </div>
 
 <div>
-    <div>성별</div>
-    <div><input required type="text" name="gender" id="gender"></div>
-</div>
-
-<div>
-    <div>좋아하는 운동</div>
-    <div><input required type="text" name="sports" id="sports"></div>
-</div>
-
-<div>
-    <button type="submit">확인</button>
+    <button id="checkbutton" type="submit">확인</button>
 </div>
 
 </form>
