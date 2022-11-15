@@ -10,9 +10,10 @@
     outline: none;
     pointer-events: none;
     padding: 10px;
+    cursor: pointer;
   }
   
-  
+
   </style>
 
 <head>
@@ -47,8 +48,10 @@ B조 {{ post.dislike_count }}명
 {% comment %} {{post.url}} {% endcomment %}
 <p>{{post.body}}</p>
 {% endfor %} -->
-<p>
-  A팀 
+{% for post in posts %}
+<button> 대화하러가기 : {{ post.url|urlize }} </button>
+{% endfor %}
+<p>  A팀 
   {% for like in random %}
   
   
