@@ -242,6 +242,7 @@ a:active{
 a {
     text-decoration: none;
     color: rgb(130, 130, 130);
+    font-size: 0.7em;
 }
 
 .navbar {
@@ -257,7 +258,6 @@ a {
     align-items: center;
     text-align: center;
     list-style: none;
-    font-size: 14px;
     color: #969696;
     font-family: NotoSansKR-Regular;
     padding-left: 0px;

@@ -31,12 +31,10 @@
 
 #rand_teamA{
   font-family: NotoSansKR-Bold;
-  margin-bottom: 0px;
 }
 
 #rand_teamB{
   font-family: NotoSansKR-Bold;    
-  margin-bottom: 0px;
 }
 
 #randA_content{
@@ -72,6 +70,7 @@
   border-radius: 10px;
   color: white;
   width: 90%;
+  cursor: pointer;
 }
 
 </style>
@@ -108,7 +107,7 @@ B조 {{ post.dislike_count }}명
 {% endfor %} -->
 
 {% for post in posts %}
-  <button id="urlbutton">카카오톡 오픈채팅방 들어가기</button>
+<button id="urlbutton">카카오톡 오픈채팅방 들어가기 : {{ post.url|urlize }}</button>
 {% endfor %}
 
 <div id="teamA">
