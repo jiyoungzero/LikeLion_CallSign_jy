@@ -142,7 +142,13 @@
   <link rel="stylesheet" href="{% static 'css/style_detail.css' %}">
   
   {% block content %}
-  
+  {% for post in posts %}
+  <div style=" width:30%; background-color: #E7ECFF;border-radius: 11px;float: left;margin:5%;height: 70%;" >
+    <p style="vertical-align: center;">A팀 모집중<br>
+      {{ post.like_count }} / {{post.count}}</p></div>
+  <div style="height: 70%; width:30%; background-color: #E7ECFF;border-radius: 11px;float: left;margin:5%;">
+    <p style="vertical-align: center;">B팀 모집중<br>
+      {{ post.dislike_count }} / {{post.countB}} 명 <br></p></div>
   
   <!-- 등록날짜 : {{post.pub_date}}<br> -->
   <!-- {{post.end_date}} {{post.start_time}} ~ {{post.end_time}}<br> -->
@@ -152,7 +158,7 @@
   <!-- 방장님 오픈채팅 url : {{ post.url|urlize }} -->
   {% comment %} {{post.url}} {% endcomment %}
   <!-- <p>{{post.body}}</p> -->
-  {% for post in posts %}
+  
   {% if user == post.writer %}
   <a href = "{%url 'post:post_edit' post.id%}">수정하기</a>
   <a href = "{%url 'post:post_delete' post.id%}">방 없애기</a>
