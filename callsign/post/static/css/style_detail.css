@@ -126,3 +126,17 @@ span{
 button{
     align-items: center;
 }
+
+#teamA_content{
+    font-family: NotoSansKR-Bold;
+    font-size: 1em;
+    margin-top: 100px;
+    color:#4B70F3;
+}
+
+#teamB_content{
+    font-family: NotoSansKR-Bold;
+    font-size: 1em;
+    margin-top: 100px;
+    color:#4B70F3;
+}
