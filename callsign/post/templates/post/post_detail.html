@@ -61,6 +61,26 @@
     text-align: center;
     color : black;
   }
+
+  #edit_post{
+    text-decoration: none;
+    color : #969696;
+  }
+
+  #edit_post:active{
+    text-decoration: none;
+    color : #969696;
+  }
+
+  #delete_post{
+    text-decoration: none;
+    color : #969696;
+  }
+
+  #delete_post:active{
+    text-decoration: none;
+    color : #969696;
+  }
   
   .sum{
     font-size: 13px;
@@ -145,12 +165,12 @@
   
   {% block content %}
   {% for post in posts %}
-  <div style=" width:30%; background-color: #E7ECFF;border-radius: 11px;float: left;margin:5%;height: 70%;" >
-    <p style="vertical-align: center;">A팀 모집중<br>
+  <div id="teamA" style=" width:39.5%; background-color: #E7ECFF;border-radius: 11px;float: left;margin:5%;height: 15em;" >
+    <p id="teamA_content" style="vertical-align: center;">TeamA 모집중<br><br>
       {{ post.like_count }} / {{post.count}}</p></div>
-  <div style="height: 70%; width:30%; background-color: #E7ECFF;border-radius: 11px;float: left;margin:5%;">
-    <p style="vertical-align: center;">B팀 모집중<br>
-      {{ post.dislike_count }} / {{post.countB}} 명 <br></p></div>
+  <div id="teamB" style="height: 15em; width:39.5%; background-color: #E7ECFF;border-radius: 11px;float: left;margin:5%;">
+    <p id="teamB_content" style="vertical-align: center;">TeamB 모집중<br><br>
+      {{ post.dislike_count }} / {{post.countB}}<br></p></div>
   
   <!-- 등록날짜 : {{post.pub_date}}<br> -->
   <!-- {{post.end_date}} {{post.start_time}} ~ {{post.end_time}}<br> -->
@@ -162,8 +182,8 @@
   <!-- <p>{{post.body}}</p> -->
   
   {% if user == post.writer %}
-  <a href = "{%url 'post:post_edit' post.id%}">수정하기</a>
-  <a href = "{%url 'post:post_delete' post.id%}">방 없애기</a>
+  <a id="edit_post" href = "{%url 'post:post_edit' post.id%}">수정하기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a id="delete_post" href = "{%url 'post:post_delete' post.id%}">방 없애기</a>
   {% endif %}
   
   {% if user == post.writer %}
